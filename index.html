@@ -10,7 +10,7 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header" id="hero">
+  <header class="site-header step-panel" id="hero" data-step-title="Welcome">
     <nav class="nav" aria-label="Primary navigation">
       <a class="brand" href="#hero" aria-label="VIP Copilot training home">
         <span class="brand-mark" aria-hidden="true"></span>
@@ -33,7 +33,7 @@
           and follow through. All fallback data is fictional and safe for training.
         </p>
         <div class="hero-actions">
-          <a class="button primary" href="#exercises">Start the lab</a>
+          <a class="button primary" href="#exercises" data-guide-next>Start the lab</a>
           <a class="button ghost" href="#downloads">Download assets</a>
         </div>
       </div>
@@ -51,7 +51,7 @@
   </header>
 
   <main id="main">
-    <section class="intro section" aria-labelledby="objectives-title">
+    <section class="intro section step-panel" aria-labelledby="objectives-title" data-step-title="Objectives">
       <div class="section-heading">
         <p class="eyebrow">What you will practice</p>
         <h2 id="objectives-title">Move from prompt to executive output.</h2>
@@ -80,7 +80,7 @@
       </div>
     </section>
 
-    <section class="pattern section" aria-labelledby="pattern-title">
+    <section class="pattern section step-panel" aria-labelledby="pattern-title" data-step-title="Prompting pattern">
       <div class="pattern-card">
         <div>
           <p class="eyebrow">Prompting pattern</p>
@@ -97,14 +97,14 @@
       </div>
     </section>
 
-    <section class="section" id="exercises" aria-labelledby="exercises-title">
+    <section class="section step-panel" id="exercises" aria-labelledby="exercises-title" data-step-title="Hands-on exercises">
       <div class="section-heading compact">
         <p class="eyebrow">Hands-on sequence</p>
         <h2 id="exercises-title">Complete three required exercises, then choose one track.</h2>
       </div>
 
       <div class="exercise-list">
-        <article class="exercise">
+        <article class="exercise" data-exercise-title="Exercise 1: Weekly Digest">
           <div class="exercise-header">
             <span class="pill required">Required</span>
             <h3>Exercise 1: Weekly Digest</h3>
@@ -122,7 +122,7 @@
           <p class="reflection">Reflection: Which theme surfaced something you would have otherwise missed this week?</p>
         </article>
 
-        <article class="exercise">
+        <article class="exercise" data-exercise-title="Exercise 2: Meeting Prep">
           <div class="exercise-header">
             <span class="pill required">Required</span>
             <h3>Exercise 2: Meeting Prep</h3>
@@ -140,7 +140,7 @@
           <p class="reflection">Reflection: Did the pre-read change how you plan to open or steer the meeting?</p>
         </article>
 
-        <article class="exercise">
+        <article class="exercise" data-exercise-title="Exercise 3: Meeting Decisions and Owners">
           <div class="exercise-header">
             <span class="pill required">Required</span>
             <h3>Exercise 3: Meeting Decisions and Owners</h3>
@@ -158,7 +158,7 @@
           <p class="reflection">Reflection: Was any decision less clear than you assumed once you saw it written as a commitment?</p>
         </article>
 
-        <article class="exercise featured">
+        <article class="exercise featured" data-exercise-title="Option 4A: Store and Product Performance">
           <div class="exercise-header">
             <span class="pill optional">Choose 4A</span>
             <h3>Store and Product Performance</h3>
@@ -177,7 +177,7 @@
           <p class="reflection">Reflection: Which insight would you bring to leadership first, and why?</p>
         </article>
 
-        <article class="exercise featured">
+        <article class="exercise featured" data-exercise-title="Option 4B: Role-Based Catch-Up">
           <div class="exercise-header">
             <span class="pill optional">Choose 4B</span>
             <h3>Role-Based Catch-Up</h3>
@@ -197,7 +197,7 @@
       </div>
     </section>
 
-    <section class="section" id="roles" aria-labelledby="roles-title">
+    <section class="section step-panel" id="roles" aria-labelledby="roles-title" data-step-title="Role-based prompts">
       <div class="section-heading compact">
         <p class="eyebrow">Choose your function</p>
         <h2 id="roles-title">Role-based prompt menu</h2>
@@ -267,7 +267,7 @@
       </div>
     </section>
 
-    <section class="section downloads" id="downloads" aria-labelledby="downloads-title">
+    <section class="section downloads step-panel" id="downloads" aria-labelledby="downloads-title" data-step-title="Downloads">
       <div class="section-heading compact">
         <p class="eyebrow">Fallback data</p>
         <h2 id="downloads-title">Downloadable workshop assets</h2>
@@ -293,7 +293,7 @@
       <p class="data-note">All downloadable demo data is fictitious and intended for training purposes only.</p>
     </section>
 
-    <section class="section responsible" id="responsible-use" aria-labelledby="responsible-title">
+    <section class="section responsible step-panel" id="responsible-use" aria-labelledby="responsible-title" data-step-title="Responsible use">
       <div class="section-heading compact">
         <p class="eyebrow">Responsible use</p>
         <h2 id="responsible-title">Copilot accelerates the work. You own the judgment.</h2>
@@ -312,6 +312,17 @@
     <p>Microsoft 365 Copilot VIP Training | Fictitious demo data for training use.</p>
     <a href="#hero">Back to top</a>
   </footer>
+
+  <div class="guide-controls" hidden>
+    <div class="guide-progress" aria-live="polite">
+      <span class="guide-step-count">Step 1 of 10</span>
+      <strong class="guide-step-title">Welcome</strong>
+    </div>
+    <div class="guide-actions">
+      <button class="guide-button secondary" type="button" data-guide-prev>Previous</button>
+      <button class="guide-button primary" type="button" data-guide-continue>Continue</button>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
