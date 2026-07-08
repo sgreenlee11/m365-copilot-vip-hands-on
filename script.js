@@ -53,14 +53,16 @@ function showStep(index, pushHash = true) {
   activeStep = Math.max(0, Math.min(index, steps.length - 1));
   const current = steps[activeStep];
 
-  document.body.classList.add("guided-mode");
   controls.hidden = false;
 
-  stepPanels.forEach((panel) => panel.classList.remove("is-active-step"));
-  exerciseCards.forEach((card) => card.classList.remove("is-active-step-card"));
+  stepPanels.forEach((panel) => panel.classList.remove("is-current-step"));
+  exerciseCards.forEach((card) => card.classList.remove("is-current-step"));
 
-  current.panel.classList.add("is-active-step");
-  if (current.card) current.card.classList.add("is-active-step-card");
+  current.panel.classList.add("is-current-step");
+  if (current.card) current.card.classList.add("is-current-step");
+
+  const target = current.card || current.panel;
+  target.appendChild(controls);
 
   prevButton.disabled = activeStep === 0;
   nextButton.textContent = activeStep === steps.length - 1 ? "Finish" : "Continue";
@@ -71,7 +73,7 @@ function showStep(index, pushHash = true) {
   if (pushHash && window.location.hash !== hash) {
     history.replaceState(null, "", hash);
   }
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  target.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function findStepByHash(hash) {
