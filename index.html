@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Microsoft 365 Copilot VIP Training | Hands-On Guide</title>
+  <meta name="description" content="Executive-focused Microsoft 365 Copilot hands-on training guide with prompts, role-based exercises, and downloadable demo assets.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="hero">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="#hero" aria-label="VIP Copilot training home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>VIP Copilot Lab</span>
+      </a>
+      <div class="nav-links">
+        <a href="#exercises">Exercises</a>
+        <a href="#roles">Role prompts</a>
+        <a href="#downloads">Downloads</a>
+        <a href="#responsible-use">Responsible use</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Microsoft 365 Copilot</p>
+        <h1>Hands-on prompts for executive work.</h1>
+        <p class="hero-lede">
+          A 50-minute practical lab for using Copilot to catch up, prepare, decide, analyze,
+          and follow through. All fallback data is fictional and safe for training.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#exercises">Start the lab</a>
+          <a class="button ghost" href="#downloads">Download assets</a>
+        </div>
+      </div>
+      <aside class="session-card" aria-label="Session summary">
+        <span class="card-kicker">50 minutes</span>
+        <h2>Session flow</h2>
+        <ol>
+          <li>Copilot and Work IQ overview</li>
+          <li>Facilitator-led capability demos</li>
+          <li>Guided hands-on exercises</li>
+          <li>Responsible-use recap</li>
+        </ol>
+      </aside>
+    </section>
+  </header>
+
+  <main id="main">
+    <section class="intro section" aria-labelledby="objectives-title">
+      <div class="section-heading">
+        <p class="eyebrow">What you will practice</p>
+        <h2 id="objectives-title">Move from prompt to executive output.</h2>
+      </div>
+      <div class="objective-grid">
+        <article>
+          <span>01</span>
+          <h3>Catch up fast</h3>
+          <p>Run a weekly catch-up across email, Teams, meetings, and files.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Prepare with context</h3>
+          <p>Walk into meetings with the agenda, stakeholder positions, relevant history, and sharp questions.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Clarify decisions</h3>
+          <p>Extract decisions, owners, due dates, open questions, and deliberately deferred decisions.</p>
+        </article>
+        <article>
+          <span>04</span>
+          <h3>Analyze business data</h3>
+          <p>Use a fictional workbook to practice finding trends, opportunities, and risks.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="pattern section" aria-labelledby="pattern-title">
+      <div class="pattern-card">
+        <div>
+          <p class="eyebrow">Prompting pattern</p>
+          <h2 id="pattern-title">Role + Context + Task + Output format + Constraints</h2>
+          <p>
+            Strong prompts tell Copilot who you are, what situation you are in, what you need done,
+            how the answer should be formatted, and what to prioritize.
+          </p>
+        </div>
+        <div class="example-prompt">
+          <button class="copy-btn" data-copy-target="worked-example">Copy</button>
+          <pre id="worked-example">I am a regional operations leader preparing for a business review. Summarize the attached store performance data, identify the three most important risks, and format the answer as an executive briefing with recommended actions.</pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="exercises" aria-labelledby="exercises-title">
+      <div class="section-heading compact">
+        <p class="eyebrow">Hands-on sequence</p>
+        <h2 id="exercises-title">Complete three required exercises, then choose one track.</h2>
+      </div>
+
+      <div class="exercise-list">
+        <article class="exercise">
+          <div class="exercise-header">
+            <span class="pill required">Required</span>
+            <h3>Exercise 1: Weekly Digest</h3>
+          </div>
+          <p><strong>When to use it:</strong> Monday morning, after time away, or whenever you need to get back on top of what moved.</p>
+          <div class="prompt-block">
+            <button class="copy-btn" data-copy-target="prompt-weekly">Copy prompt</button>
+            <pre id="prompt-weekly">Summarize my past week across email, Teams chats, meetings, and shared files. Group the summary by stakeholder theme: [list the stakeholder groups or focus areas you own -- for example customers, field and operations, product, supply chain, people, finance, and urgent decisions]. For each theme, include what changed, why it matters, any decision needed from me, and suggested next step.</pre>
+          </div>
+          <p><strong>Follow-up:</strong></p>
+          <div class="prompt-block small">
+            <button class="copy-btn" data-copy-target="follow-weekly">Copy follow-up</button>
+            <pre id="follow-weekly">Turn this into a 5-bullet executive briefing I could review before my next leadership meeting.</pre>
+          </div>
+          <p class="reflection">Reflection: Which theme surfaced something you would have otherwise missed this week?</p>
+        </article>
+
+        <article class="exercise">
+          <div class="exercise-header">
+            <span class="pill required">Required</span>
+            <h3>Exercise 2: Meeting Prep</h3>
+          </div>
+          <p><strong>When to use it:</strong> 15 to 30 minutes before a meeting when you need the agenda, participants, and relevant history.</p>
+          <div class="prompt-block">
+            <button class="copy-btn" data-copy-target="prompt-meeting-prep">Copy prompt</button>
+            <pre id="prompt-meeting-prep">Prepare me for [my next meeting -- or name a specific upcoming meeting]. Summarize the agenda, list the key participants and their likely positions, and surface any recent emails, Teams messages, or documents relevant to the topics we will discuss. End with the top three questions I should ask.</pre>
+          </div>
+          <p><strong>Follow-up:</strong></p>
+          <div class="prompt-block small">
+            <button class="copy-btn" data-copy-target="follow-meeting-prep">Copy follow-up</button>
+            <pre id="follow-meeting-prep">Create a concise pre-read with sections: Context, Likely Tensions, Decisions Needed, Questions to Ask, and Risks.</pre>
+          </div>
+          <p class="reflection">Reflection: Did the pre-read change how you plan to open or steer the meeting?</p>
+        </article>
+
+        <article class="exercise">
+          <div class="exercise-header">
+            <span class="pill required">Required</span>
+            <h3>Exercise 3: Meeting Decisions and Owners</h3>
+          </div>
+          <p><strong>When to use it:</strong> At the end of a meeting, or right after, when you need a clean action record.</p>
+          <div class="prompt-block">
+            <button class="copy-btn" data-copy-target="prompt-decisions">Copy prompt</button>
+            <pre id="prompt-decisions">From [name the meeting, or paste its notes or transcript], generate the decisions-and-owners block I can post to the chat right now. Include decisions made as specific commitments, action items with named owner and due date, open questions we are carrying forward, and the one decision we explicitly chose not to make today and when we will revisit it.</pre>
+          </div>
+          <p><strong>Follow-up:</strong></p>
+          <div class="prompt-block small">
+            <button class="copy-btn" data-copy-target="follow-decisions">Copy follow-up</button>
+            <pre id="follow-decisions">Rewrite this as a concise Teams post with a professional executive tone.</pre>
+          </div>
+          <p class="reflection">Reflection: Was any decision less clear than you assumed once you saw it written as a commitment?</p>
+        </article>
+
+        <article class="exercise featured">
+          <div class="exercise-header">
+            <span class="pill optional">Choose 4A</span>
+            <h3>Store and Product Performance</h3>
+          </div>
+          <p><strong>When to use it:</strong> When you have performance data and need the story: what is working, what is not, and what leadership should do.</p>
+          <div class="prompt-block">
+            <button class="copy-btn" data-copy-target="prompt-store">Copy prompt</button>
+            <pre id="prompt-store">Using the attached weekly store and product performance data, identify the most important trends, opportunities, and risks. Show the top-performing and underperforming store groups, products, and regions. Recommend the three actions leadership should consider this week, and include the evidence behind each recommendation.</pre>
+          </div>
+          <p><strong>Use with:</strong> <a href="assets/Demo_Weekly_Store_Product_Performance.xlsx" download>Demo_Weekly_Store_Product_Performance.xlsx</a> and optionally <a href="assets/Demo_Customer_Feedback.csv" download>Demo_Customer_Feedback.csv</a>.</p>
+          <p><strong>Follow-up:</strong></p>
+          <div class="prompt-block small">
+            <button class="copy-btn" data-copy-target="follow-store">Copy follow-up</button>
+            <pre id="follow-store">Convert this into a one-page leadership brief with sections: Situation, Insight, Decision Needed, Risks, and Recommended Next Step.</pre>
+          </div>
+          <p class="reflection">Reflection: Which insight would you bring to leadership first, and why?</p>
+        </article>
+
+        <article class="exercise featured">
+          <div class="exercise-header">
+            <span class="pill optional">Choose 4B</span>
+            <h3>Role-Based Catch-Up</h3>
+          </div>
+          <p><strong>When to use it:</strong> When you want a catch-up scoped tightly to your function, sorted by what you must act on.</p>
+          <div class="prompt-block">
+            <button class="copy-btn" data-copy-target="prompt-role">Copy prompt</button>
+            <pre id="prompt-role">Summarize communications from the past week related to [my function -- your area of ownership]. Prioritize anything requiring my decision, anything with customer/store/associate impact, anything with financial or operational risk, and anything that has a deadline. Group the results into: decide today, delegate, monitor, and ignore.</pre>
+          </div>
+          <p><strong>Follow-up:</strong></p>
+          <div class="prompt-block small">
+            <button class="copy-btn" data-copy-target="follow-role">Copy follow-up</button>
+            <pre id="follow-role">Draft three follow-up messages: one decision response, one delegation note, and one acknowledgement.</pre>
+          </div>
+          <p class="reflection">Reflection: What landed in "ignore" that normally consumes your attention?</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="roles" aria-labelledby="roles-title">
+      <div class="section-heading compact">
+        <p class="eyebrow">Choose your function</p>
+        <h2 id="roles-title">Role-based prompt menu</h2>
+        <p>Every prompt prioritizes decisions, customer/store/associate impact, financial or operational risk, and deadlines.</p>
+      </div>
+      <div class="role-grid">
+        <article class="role-card">
+          <h3>Store / Field Operations</h3>
+          <p>Store execution, staffing, safety, and district escalations.</p>
+          <button class="copy-btn inline" data-copy-target="role-ops">Copy</button>
+          <pre id="role-ops">Summarize communications from the past week related to store and field operations: store performance, staffing and scheduling, execution issues, safety and shrink, customer complaints, and district escalations. Prioritize anything requiring my decision, anything affecting stores, customers, or associates this week, anything with operational risk, and anything with a deadline. Group the results into: decide today, delegate, monitor, and ignore.</pre>
+        </article>
+        <article class="role-card">
+          <h3>Merchandising / Product / Category</h3>
+          <p>Assortment, pricing, promotions, vendors, and inventory.</p>
+          <button class="copy-btn inline" data-copy-target="role-merch">Copy</button>
+          <pre id="role-merch">Summarize communications from the past week related to merchandising, product, and category management: assortment and pricing, promotions, vendor and supplier updates, inventory and availability, and category performance. Prioritize anything requiring my decision, anything with customer or store impact, anything with margin or financial risk, and anything with a deadline. Group the results into: decide today, delegate, monitor, and ignore.</pre>
+        </article>
+        <article class="role-card">
+          <h3>Supply Chain / Transportation</h3>
+          <p>Logistics, supplier escalations, service levels, and availability.</p>
+          <button class="copy-btn inline" data-copy-target="role-supply">Copy</button>
+          <pre id="role-supply">Summarize communications from the past week about supply chain, transportation, logistics, supplier escalations, safety, quality, and service levels. Prioritize anything affecting stores, customers, associates, or product availability this week, anything requiring my decision, anything with operational or cost risk, and anything with a deadline. Group the results into: decide today, delegate, monitor, and ignore.</pre>
+        </article>
+        <article class="role-card">
+          <h3>Customer Experience / Services / Pro</h3>
+          <p>Customer pain points, service issues, Pro accounts, and sentiment.</p>
+          <button class="copy-btn inline" data-copy-target="role-cx">Copy</button>
+          <pre id="role-cx">Catch me up on communications from the past week across customer experience, services, and Pro: customer pain points, service and installation issues, Pro account escalations, sentiment shifts, and satisfaction trends. Prioritize anything requiring my decision, anything with customer or associate impact, anything with financial or reputational risk, and anything with a deadline. Group the results into: decide today, delegate, monitor, and ignore.</pre>
+        </article>
+        <article class="role-card">
+          <h3>HR / Learning / Associate Relations</h3>
+          <p>Talent, associate relations, policy, and organizational change.</p>
+          <button class="copy-btn inline" data-copy-target="role-hr">Copy</button>
+          <pre id="role-hr">Flag any HR, learning, associate relations, talent, organizational change, or policy communications from the past week. Prioritize anything requiring my decision or leadership alignment, anything with associate or store impact, anything needing legal review or manager communication, and anything with a deadline. Group the results into: decide today, delegate, monitor, and ignore.</pre>
+        </article>
+        <article class="role-card">
+          <h3>IT / Security / Data / Payments</h3>
+          <p>System incidents, security, payments, projects, and vendors.</p>
+          <button class="copy-btn inline" data-copy-target="role-it">Copy</button>
+          <pre id="role-it">Summarize IT, security, data, payments, system incident, project milestone, and vendor escalation communications from the past week. Prioritize anything requiring my decision, anything affecting production systems, stores, customers, or associates, anything with security, compliance, or operational risk, and anything with a deadline. Group the results into: decide today, delegate, monitor, and ignore.</pre>
+        </article>
+        <article class="role-card">
+          <h3>Finance / Tax / Controller</h3>
+          <p>Close, approvals, forecast risk, tax, and audit items.</p>
+          <button class="copy-btn inline" data-copy-target="role-finance">Copy</button>
+          <pre id="role-finance">Pull together finance-related communications from the past week: close updates, approvals pending, forecast risks, tax and compliance topics, and audit items. Prioritize anything requiring my decision, anything with a dollar amount or executive decision attached, anything with financial or compliance risk, and anything with a deadline. Group the results into: decide today, delegate, monitor, and ignore.</pre>
+        </article>
+        <article class="role-card">
+          <h3>Legal / Compliance / Risk</h3>
+          <p>Regulatory, privacy, safety, and coordinated response.</p>
+          <button class="copy-btn inline" data-copy-target="role-legal">Copy</button>
+          <pre id="role-legal">Summarize legal, compliance, regulatory, privacy, safety, and risk communications from the past week. Prioritize anything requiring my decision or executive attention, anything with customer, associate, or store impact, anything needing audit committee awareness, policy change, or coordinated response, and anything with a deadline. Group the results into: decide today, delegate, monitor, and ignore.</pre>
+        </article>
+        <article class="role-card">
+          <h3>Marketing / Online</h3>
+          <p>Campaigns, e-commerce metrics, brand, and promotional calendar.</p>
+          <button class="copy-btn inline" data-copy-target="role-marketing">Copy</button>
+          <pre id="role-marketing">Catch me up on communications from the past week across marketing and online: campaign performance, e-commerce and site metrics, brand and sentiment shifts, promotional calendar, and customer-facing content. Prioritize anything requiring my decision, anything with customer or store impact, anything with budget or reputational risk, and anything with a deadline. Group the results into: decide today, delegate, monitor, and ignore.</pre>
+        </article>
+        <article class="role-card">
+          <h3>Real Estate / Construction</h3>
+          <p>New stores, remodels, permitting, contractors, and facilities.</p>
+          <button class="copy-btn inline" data-copy-target="role-real-estate">Copy</button>
+          <pre id="role-real-estate">Summarize communications from the past week related to real estate and construction: new store and remodel projects, site selection and permitting, landlord and contractor updates, project budgets and timelines, and facilities issues. Prioritize anything requiring my decision, anything affecting store openings or customers, anything with cost, schedule, or safety risk, and anything with a deadline. Group the results into: decide today, delegate, monitor, and ignore.</pre>
+        </article>
+      </div>
+    </section>
+
+    <section class="section downloads" id="downloads" aria-labelledby="downloads-title">
+      <div class="section-heading compact">
+        <p class="eyebrow">Fallback data</p>
+        <h2 id="downloads-title">Downloadable workshop assets</h2>
+        <p>Use your own data when possible. If not, these fictional assets are available for the hands-on exercises.</p>
+      </div>
+      <div class="download-grid">
+        <a class="download-card" href="assets/Demo_Weekly_Store_Product_Performance.xlsx" download>
+          <span class="filetype">XLSX</span>
+          <h3>Weekly Store and Product Performance</h3>
+          <p>Fictional workbook for Exercise 4A performance analysis.</p>
+        </a>
+        <a class="download-card" href="assets/Demo_Customer_Feedback.csv" download>
+          <span class="filetype">CSV</span>
+          <h3>Customer Feedback</h3>
+          <p>Fictional feedback data for supporting sentiment and customer themes.</p>
+        </a>
+        <a class="download-card" href="assets/executive_use_case_prompts.csv" download>
+          <span class="filetype">CSV</span>
+          <h3>Executive Prompt Inventory</h3>
+          <p>Reference inventory of executive-oriented Copilot use cases and prompts.</p>
+        </a>
+      </div>
+      <p class="data-note">All downloadable demo data is fictitious and intended for training purposes only.</p>
+    </section>
+
+    <section class="section responsible" id="responsible-use" aria-labelledby="responsible-title">
+      <div class="section-heading compact">
+        <p class="eyebrow">Responsible use</p>
+        <h2 id="responsible-title">Copilot accelerates the work. You own the judgment.</h2>
+      </div>
+      <ul class="responsible-list">
+        <li>Review outputs before you act on or share them.</li>
+        <li>Check sources and citations behind key facts and figures.</li>
+        <li>Do not paste sensitive content where it does not belong.</li>
+        <li>Use only approved systems and approved data.</li>
+        <li>Copilot respects your permissions, but you remain accountable for the outcome.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Microsoft 365 Copilot VIP Training | Fictitious demo data for training use.</p>
+    <a href="#hero">Back to top</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
