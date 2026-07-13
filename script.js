@@ -39,7 +39,9 @@ function setActivity(index, updateHash = true) {
   prev.disabled = current === 0;
   next.textContent = current === panels.length - 1 ? "Restart" : "Continue";
   if (updateHash) history.replaceState(null, "", `#activity-${current + 1}`);
-  document.querySelector(".activity-stage").scrollIntoView({ behavior: "smooth", block: "start" });
+  if (updateHash) {
+    document.querySelector(".activity-stage").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
 }
 
 links.forEach((link) => {

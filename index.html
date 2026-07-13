@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Microsoft 365 Copilot VIP Training | Hands-On Player</title>
+  <title>Microsoft 365 Copilot VIP Training | Executive Field Briefing</title>
   <meta name="description" content="Executive-focused Microsoft 365 Copilot hands-on training player with prompts, role-based exercises, and downloadable demo assets.">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -14,8 +14,8 @@
     <div class="topbar-brand">
       <span class="brand-mark" aria-hidden="true"></span>
       <div>
-        <strong>VIP Copilot Lab</strong>
-        <span>Microsoft 365 Copilot hands-on guide</span>
+        <strong>Officer Copilot Lab</strong>
+        <span>Executive field briefing</span>
       </div>
     </div>
     <div class="topbar-progress" aria-live="polite">
@@ -37,7 +37,7 @@
         </button>
         <button type="button" class="activity-link" data-activity-link="1">
           <span class="activity-number">02</span>
-          <span><strong>Prompting pattern</strong><small>Role + context + task</small></span>
+          <span><strong>Prompting pattern</strong><small>Goal + context + source</small></span>
         </button>
         <button type="button" class="activity-link" data-activity-link="2">
           <span class="activity-number">03</span>
@@ -88,21 +88,22 @@
       <section class="activity-panel" data-activity="1">
         <div class="activity-kicker">Activity 2</div>
         <h2>The prompting pattern</h2>
-        <p class="activity-lede">Strong prompts give Copilot a clear role, the right context, a specific task, the output format you want, and constraints.</p>
+        <p class="activity-lede">Strong prompts give Copilot a clear goal, relevant context, the sources it should use, and clear expectations for the response.</p>
         <div class="formula-card">
-          <span>Role</span><span>Context</span><span>Task</span><span>Format</span><span>Constraints</span>
+          <span>Goal</span><span>Context</span><span>Source</span><span>Expectations</span>
         </div>
         <div class="prompt-card">
           <div class="prompt-card-header">
             <h3>Worked example</h3>
             <button class="copy-btn" type="button" data-copy-target="worked-example">Copy</button>
           </div>
-          <pre id="worked-example">I am a regional operations leader preparing for a business review. Summarize the attached store performance data, identify the three most important risks, and format the answer as an executive briefing with recommended actions.</pre>
+          <pre id="worked-example">Summarize the three most important performance risks for my upcoming regional business review. Focus on issues that require a leadership decision this week. Use the attached store performance workbook as the source. Format the response as a concise executive briefing with evidence and recommended actions.</pre>
         </div>
         <ul class="check-list">
-          <li>Be specific about people, teams, stores, products, or time period.</li>
-          <li>Ask for the output format you need: bullets, table, brief, or Teams post.</li>
-          <li>Tell Copilot what to prioritize so the most important items rise to the top.</li>
+          <li>State the goal clearly: what do you want Copilot to accomplish?</li>
+          <li>Add context about the audience, situation, people, or time period.</li>
+          <li>Identify the email, meeting, file, or other source Copilot should use.</li>
+          <li>Set expectations for format, tone, length, and what to prioritize.</li>
           <li>Verify facts, numbers, and names before acting or sharing.</li>
         </ul>
       </section>
