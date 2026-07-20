@@ -175,6 +175,91 @@
     h3 { font-size: 1.45rem; }
     h4 { font-size: 1.1rem; }
 
+    .legacy-panel h2 {
+      font-family: "Aptos Display", "Segoe UI", sans-serif;
+      font-size: clamp(2.4rem, 5vw, 4.8rem);
+    }
+
+    .legacy-kicker {
+      width: fit-content;
+      margin-bottom: 1.1rem;
+      padding: 0.38rem 0.65rem;
+      color: white;
+      background: var(--orange);
+      font-size: 0.75rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .legacy-lede {
+      max-width: 850px;
+      margin: 1.25rem 0 2rem;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
+    }
+
+    .objective-list,
+    .formula-card {
+      display: grid;
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .objective-list { grid-template-columns: repeat(2, 1fr); }
+    .formula-card { grid-template-columns: repeat(4, 1fr); margin: 1.5rem 0; }
+
+    .objective-list article,
+    .formula-card span {
+      padding: 1.2rem;
+      background: var(--paper);
+    }
+
+    .objective-list span {
+      color: var(--orange);
+      font-size: 1.15rem;
+      font-weight: 900;
+    }
+
+    .objective-list p { margin: 0.4rem 0 0; color: var(--muted); }
+
+    .formula-card span {
+      text-align: center;
+      font-weight: 900;
+    }
+
+    .check-list {
+      display: grid;
+      gap: 0.7rem;
+      margin: 1.5rem 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .check-list li {
+      position: relative;
+      padding-left: 1.8rem;
+    }
+
+    .check-list li::before {
+      content: "";
+      position: absolute;
+      top: 0.42rem;
+      left: 0;
+      width: 0.8rem;
+      height: 0.8rem;
+      background: var(--orange);
+      transform: rotate(45deg);
+    }
+
+    .activity-note {
+      margin-top: 1.5rem;
+      padding: 1rem 1.15rem;
+      background: rgba(249, 99, 2, 0.08);
+      border-left: 6px solid var(--orange);
+    }
+
     .nav {
       display: grid;
       gap: 0.35rem;
@@ -550,7 +635,12 @@
       .dev-badge { display: none; }
       .panel { min-height: auto; padding: 1.35rem; }
       pre, h1, h2, h3, p, a { overflow-wrap: anywhere; }
-      .hero-grid, .capability-grid, .choice-grid, .output-grid { grid-template-columns: 1fr; }
+      .hero-grid,
+      .capability-grid,
+      .choice-grid,
+      .output-grid,
+      .objective-list,
+      .formula-card { grid-template-columns: 1fr; }
       .resource-block { display: block; width: auto; }
       .guide { flex-wrap: wrap; }
       h2 { font-size: clamp(2.3rem, 10vw, 3.1rem); }
@@ -579,8 +669,8 @@
         <h1>From signal to executive action</h1>
       </div>
       <nav class="nav">
-        <button class="nav-button is-active" type="button" data-nav="0"><span class="nav-number">01</span><div><strong>Briefing</strong><small>Mission and flow</small></div></button>
-        <button class="nav-button" type="button" data-nav="1"><span class="nav-number">02</span><div><strong>Prompt</strong><small>Direct the work</small></div></button>
+        <button class="nav-button is-active" type="button" data-nav="0"><span class="nav-number">01</span><div><strong>Welcome</strong><small>Objectives and flow</small></div></button>
+        <button class="nav-button" type="button" data-nav="1"><span class="nav-number">02</span><div><strong>Prompting pattern</strong><small>Goal + context + source</small></div></button>
         <button class="nav-button" type="button" data-nav="2"><span class="nav-number">03</span><div><strong>Catch up</strong><small>Find the signal</small></div></button>
         <button class="nav-button" type="button" data-nav="3"><span class="nav-number">04</span><div><strong>Prepare</strong><small>Enter informed</small></div></button>
         <button class="nav-button" type="button" data-nav="4"><span class="nav-number">05</span><div><strong>Analyze</strong><small>Test the story</small></div></button>
@@ -591,39 +681,37 @@
     </aside>
 
     <main class="stage" aria-live="polite">
-      <section class="panel is-active" data-panel="0">
-        <div class="kicker">Executive field briefing</div>
-        <h2 id="activity-title">One business day. Six Copilot moves.</h2>
-        <p class="lede">Instead of practicing six versions of summarization, this lab follows one executive decision from first signal to final communication.</p>
-        <div class="scenario-banner">
-          <h3>The challenge</h3>
-          <p>Regional performance has softened while customer comments point to product availability and service friction. Your leadership meeting begins shortly. What changed, what matters, and what should the organization do next?</p>
+      <section class="panel legacy-panel is-active" data-panel="0">
+        <div class="legacy-kicker">Activity 1</div>
+        <h2 id="activity-title">Welcome and objectives</h2>
+        <p class="legacy-lede">This is a practical lab for copying, adapting, and using executive-ready Microsoft 365 Copilot prompts. Use your own work context when possible; fallback demo data is fictional.</p>
+        <div class="objective-list">
+          <article><span>Catch up</span><p>Run a weekly catch-up across email, chats, meetings, and files.</p></article>
+          <article><span>Prepare</span><p>Get meeting context, participant positions, and questions in minutes.</p></article>
+          <article><span>Decide</span><p>Extract decisions, action items, owners, dates, and open questions.</p></article>
+          <article><span>Analyze</span><p>Surface trends, opportunities, and risks from business data.</p></article>
         </div>
-        <div class="hero-grid">
-          <article><strong>Ask</strong><span>Catch up across your work and identify the signal.</span></article>
-          <article><strong>Decide</strong><span>Interrogate data and turn evidence into a recommendation.</span></article>
-          <article><strong>Act</strong><span>Create the message and capture accountable follow-through.</span></article>
-        </div>
-        <div class="ga-note"><strong>Scope guardrail:</strong> Every demonstrated capability is documented as generally available Microsoft 365 Copilot functionality. No Frontier or preview features are required.</div>
+        <div class="activity-note"><strong>Training data note:</strong> All fallback demo data references Northwind Home Improvement Co., a fictitious company used for training purposes only.</div>
       </section>
 
-      <section class="panel" data-panel="1">
-        <div class="kicker">Activity 2 · 5 minutes</div>
-        <h2>Prompt for a decision—not a paragraph.</h2>
-        <p class="lede">Give Copilot a goal, the context that changes the answer, the source of truth, and the shape of a useful response.</p>
-        <div class="capability-grid">
-          <article><strong>Goal</strong><span>What outcome do you need?</span></article>
-          <article><strong>Context</strong><span>What should influence the answer?</span></article>
-          <article><strong>Source</strong><span>Where should Copilot look?</span></article>
-          <article><strong>Expectations</strong><span>What format and level of detail?</span></article>
-          <article><strong>Evidence</strong><span>What facts support the conclusion?</span></article>
-          <article><strong>Judgment</strong><span>What must you verify or decide?</span></article>
+      <section class="panel legacy-panel" data-panel="1">
+        <div class="legacy-kicker">Activity 2</div>
+        <h2>The prompting pattern</h2>
+        <p class="legacy-lede">Strong prompts give Copilot a clear goal, relevant context, the sources it should use, and clear expectations for the response.</p>
+        <div class="formula-card">
+          <span>Goal</span><span>Context</span><span>Source</span><span>Expectations</span>
         </div>
         <div class="prompt-card">
-          <div class="prompt-header"><h3>Executive prompt pattern</h3><button class="copy-button" type="button" data-copy="prompt-pattern">Copy</button></div>
-          <pre id="prompt-pattern">Help me decide [the decision]. The situation is [relevant context and constraints]. Use [specific files, messages, meetings, or data] as the source. Identify the strongest evidence, competing interpretations, risks, and missing information. Recommend a course of action and format it as [desired output]. Clearly distinguish facts from assumptions.</pre>
+          <div class="prompt-header"><h3>Worked example</h3><button class="copy-button" type="button" data-copy="prompt-pattern">Copy</button></div>
+          <pre id="prompt-pattern">Summarize the three most important performance risks for my upcoming regional business review. Focus on issues that require a leadership decision this week. Use the attached store performance workbook as the source. Format the response as a concise executive briefing with evidence and recommended actions.</pre>
         </div>
-        <p class="reflection"><strong>Facilitator move:</strong> Ask participants which phrase makes this prompt safer and more useful than “summarize this.”</p>
+        <ul class="check-list">
+          <li>State the goal clearly: what do you want Copilot to accomplish?</li>
+          <li>Add context about the audience, situation, people, or time period.</li>
+          <li>Identify the email, meeting, file, or other source Copilot should use.</li>
+          <li>Set expectations for format, tone, length, and what to prioritize.</li>
+          <li>Verify facts, numbers, and names before acting or sharing.</li>
+        </ul>
       </section>
 
       <section class="panel" data-panel="2">
@@ -652,14 +740,15 @@
         <h2>Prepare: enter informed.</h2>
         <p class="lede">Use Copilot with an upcoming meeting and the content available to you in Teams or Outlook. The goal is not a generic agenda—it is a sharper leadership posture.</p>
         <div class="meta"><span>Teams or Outlook</span><span>Meeting context</span><span>Questions and tensions</span></div>
+        <div class="activity-note"><strong>Point Copilot to the meeting:</strong> In Copilot Chat, make sure <strong>Work IQ</strong> is on. Select <strong>Add work content</strong> in the prompt box, or type <strong>/</strong>. Choose <strong>Meetings</strong>, search by meeting title or organizer, and select the meeting. It will appear as a reference in the prompt.</div>
         <ol class="steps">
-          <li><div><strong>Choose a real upcoming meeting</strong> with enough existing context to make the exercise useful.</div></li>
-          <li><div><strong>Use Copilot in the meeting workflow</strong> to review relevant context available to you.</div></li>
+          <li><div><strong>Choose a real upcoming meeting</strong> and add it to the prompt using the Work IQ steps above.</div></li>
+          <li><div><strong>Run the preparation prompt</strong> with the meeting reference attached.</div></li>
           <li><div><strong>Verify participant positions</strong> before treating them as fact.</div></li>
         </ol>
         <div class="prompt-card">
           <div class="prompt-header"><h3>Leadership meeting pre-read</h3><button class="copy-button" type="button" data-copy="meeting-prompt">Copy</button></div>
-          <pre id="meeting-prompt">Prepare me for [meeting name]. Summarize the purpose, recent developments connected to the agenda, and any decisions that appear to be needed. Identify the participants whose input will be important, but do not infer a person's position unless it is supported by available content. End with three questions I should ask and two assumptions the group should test.</pre>
+          <pre id="meeting-prompt">Using the meeting I added to this prompt, prepare me for the discussion. Summarize the purpose, recent developments connected to the agenda, and any decisions that appear to be needed. Identify the participants whose input will be important, but do not infer a person's position unless it is supported by available content. End with three questions I should ask and two assumptions the group should test.</pre>
         </div>
         <p class="reflection"><strong>Engagement moment:</strong> Pair up and compare the questions Copilot proposed. Which one would materially improve the meeting?</p>
       </section>
@@ -667,66 +756,80 @@
       <section class="panel" data-panel="4">
         <div class="kicker">Activity 5 · 12 minutes</div>
         <h2>Analyze: test the story.</h2>
-        <p class="lede">Move from communication signals to business evidence. Participants choose the familiar Excel route or a first-party agent route.</p>
+        <p class="lede">Move from communication signals to business evidence. Choose one route; each uses a different dataset and a prompt designed for that tool and business question.</p>
         <div class="choice-grid">
           <article class="choice-card">
             <span class="pill orange">Core route</span>
             <h3>Copilot in Excel</h3>
-            <p>Open the performance workbook in Excel. Ask Copilot to identify trends, compare segments, and visualize the evidence.</p>
+            <p>Use structured performance data to compare regions, store groups, and products, then visualize the most important result.</p>
             <a class="source-link" href="../assets/Demo_Weekly_Store_Product_Performance.xlsx" download>Download performance workbook</a>
           </article>
           <article class="choice-card">
             <span class="pill">First-party agent route</span>
             <h3>Analyst</h3>
-            <p>Use Analyst in Microsoft 365 Copilot to explore the workbook with natural-language questions and produce a structured analysis.</p>
+            <p>Use customer comments to identify recurring themes, affected experiences, and evidence-backed intervention priorities.</p>
             <a class="source-link" href="../assets/Demo_Customer_Feedback.csv" download>Download customer feedback data</a>
           </article>
         </div>
         <div class="prompt-card">
-          <div class="prompt-header"><h3>Evidence-to-decision analysis</h3><button class="copy-button" type="button" data-copy="analysis-prompt">Copy</button></div>
-          <pre id="analysis-prompt">Analyze this performance data to determine where leadership attention would have the greatest impact this week. Compare regions, store groups, and products; identify meaningful outliers and trends; and show the evidence behind each finding. Then propose three actions, the expected benefit of each, and the additional information needed before making a final decision. Create a visualization that makes the most important comparison easy to understand.</pre>
+          <div class="prompt-header"><h3>Route A · Copilot in Excel</h3><button class="copy-button" type="button" data-copy="excel-analysis-prompt">Copy</button></div>
+          <pre id="excel-analysis-prompt">Analyze this weekly store and product performance data to identify where leadership attention would have the greatest impact this week. Compare regions, store groups, and products; identify meaningful outliers and trends; and show the evidence behind each finding. Recommend three actions and the additional information needed before making a final decision. Create a visualization that makes the most important comparison easy to understand.</pre>
         </div>
         <div class="prompt-card">
-          <div class="prompt-header"><h4>Decision follow-up</h4><button class="copy-button" type="button" data-copy="analysis-follow">Copy</button></div>
-          <pre id="analysis-follow">Argue against your leading recommendation. What alternative explanation or risk could change the decision?</pre>
+          <div class="prompt-header"><h3>Route B · Analyst</h3><button class="copy-button" type="button" data-copy="analyst-analysis-prompt">Copy</button></div>
+          <pre id="analyst-analysis-prompt">Analyze this customer feedback data to identify the issues most likely to require executive intervention. Group comments into recurring themes, quantify how often each theme appears, identify the stores, regions, products, or service moments most affected, and include representative evidence. Recommend the three intervention priorities with the expected customer or operational benefit of each. Clearly identify limitations or missing context in the data.</pre>
+        </div>
+        <div class="prompt-card">
+          <div class="prompt-header"><h4>Optional · Bring your own data</h4><button class="copy-button" type="button" data-copy="byod-analysis-prompt">Copy</button></div>
+          <pre id="byod-analysis-prompt">Analyze the attached [workbook or CSV] to help me decide [the business decision]. The data covers [time period, population, and business process]. First describe the fields and any data-quality limitations you observe. Then identify the most important trends, exceptions, risks, and opportunities; support each finding with evidence; and recommend three actions. Clearly distinguish what the data proves from what would require additional context.</pre>
+        </div>
+        <div class="prompt-card">
+          <div class="prompt-header"><h4>Pressure-test either route</h4><button class="copy-button" type="button" data-copy="analysis-follow">Copy</button></div>
+          <pre id="analysis-follow">Argue against your leading recommendation. What alternative explanation, missing data, or risk could change the decision?</pre>
         </div>
       </section>
 
       <section class="panel" data-panel="5">
         <div class="kicker">Activity 6 · 8 minutes</div>
-        <h2>Create: shape the message.</h2>
-        <p class="lede">The analysis is not the deliverable. Turn it into communication that fits the audience and the moment.</p>
-        <div class="output-grid">
-          <article><h3>Word</h3><p>Draft a one-page executive decision brief from the analysis.</p></article>
-          <article><h3>PowerPoint</h3><p>Create a short leadership narrative or slide outline using the source material.</p></article>
-          <article><h3>Outlook</h3><p>Draft a concise request for alignment or approval.</p></article>
-          <article><h3>Teams</h3><p>Translate the decision into a clear leadership update.</p></article>
-        </div>
+        <h2>Create: build the decision brief.</h2>
+        <p class="lede">Use one prescribed handoff: move the verified analysis into Word and turn it into a one-page brief for leadership review.</p>
+        <ol class="steps">
+          <li><div><strong>Finalize the analysis.</strong> Review the evidence, correct errors, and keep only findings you are prepared to stand behind.</div></li>
+          <li><div><strong>Open a new Word document.</strong> Open Copilot in Word and select the option to draft content.</div></li>
+          <li><div><strong>Provide the handoff.</strong> Paste the verified analysis into the prompt, or reference the saved analysis/source file when that option is available.</div></li>
+          <li><div><strong>Generate and edit.</strong> Run the prompt below, then review every number, recommendation, and source before sharing.</div></li>
+        </ol>
         <div class="prompt-card">
           <div class="prompt-header"><h3>Executive decision brief</h3><button class="copy-button" type="button" data-copy="create-prompt">Copy</button></div>
-          <pre id="create-prompt">Using the analysis and source material, draft a one-page executive decision brief. Use the sections Situation, Evidence, Options, Recommendation, Risks, and Decision Needed. Keep the tone direct and neutral. Preserve important numbers, cite or identify the source of factual claims, and flag anything that still requires validation.</pre>
+          <pre id="create-prompt">Using the verified analysis included with this prompt, draft a one-page executive decision brief. Use the sections Situation, Evidence, Options, Recommendation, Risks, and Decision Needed. Keep the tone direct and neutral. Preserve important numbers, identify the source of factual claims, and flag anything that still requires validation.</pre>
         </div>
         <div class="prompt-card">
-          <div class="prompt-header"><h4>Audience shift</h4><button class="copy-button" type="button" data-copy="create-follow">Copy</button></div>
-          <pre id="create-follow">Now adapt this for [store leaders / the board / associates / a vendor]. Change the level of detail and language without changing the underlying facts or recommendation.</pre>
+          <div class="prompt-header"><h4>Executive edit</h4><button class="copy-button" type="button" data-copy="create-follow">Copy</button></div>
+          <pre id="create-follow">Reduce this to no more than one page. Lead with the decision required, retain only evidence that materially affects the decision, and end with the recommended owner and next checkpoint.</pre>
         </div>
-        <p class="reflection"><strong>Reflection:</strong> What changed when the audience changed—and what should not have changed?</p>
+        <p class="reflection"><strong>Reflection:</strong> Did the brief make the decision easier to understand, or simply make the analysis shorter?</p>
       </section>
 
       <section class="panel" data-panel="6">
         <div class="kicker">Activity 7 · 6 minutes</div>
         <h2>Follow through: make it accountable.</h2>
-        <p class="lede">Use Copilot in Teams to review a meeting summary or transcript and convert discussion into explicit commitments.</p>
-        <div class="meta"><span>Teams meeting recap</span><span>Decisions</span><span>Owners</span><span>Open questions</span></div>
+        <p class="lede">Point Copilot Chat to a specific past meeting, convert the discussion into explicit commitments, and open a ready-to-review follow-up draft in Outlook.</p>
+        <div class="meta"><span>Work IQ</span><span>Teams meeting recap</span><span>Decisions and owners</span><span>Outlook draft</span></div>
+        <div class="activity-note"><strong>Add the specific meeting:</strong> In Copilot Chat, make sure <strong>Work IQ</strong> is on. Select <strong>Add work content</strong>, or type <strong>/</strong>. Choose <strong>Meetings</strong>, search by meeting title or organizer, and select the meeting before pasting the prompt.</div>
         <div class="prompt-card">
-          <div class="prompt-header"><h3>Decision and owner record</h3><button class="copy-button" type="button" data-copy="follow-through-prompt">Copy</button></div>
-          <pre id="follow-through-prompt">Using this meeting's available recap or transcript, create a decision and owner record. Include decisions made, action items with the named owner and stated due date, unresolved questions, and items that were discussed but not decided. Do not invent an owner or deadline when one was not stated; mark it as unassigned or not specified.</pre>
+          <div class="prompt-header"><h3>Decision record and Outlook follow-up</h3><button class="copy-button" type="button" data-copy="follow-through-prompt">Copy</button></div>
+          <pre id="follow-through-prompt">Using the meeting I added to this prompt, create a decision and owner record from the available recap or transcript. Include decisions made, action items with the named owner and stated due date, unresolved questions, and items discussed but not decided. Do not invent an owner or deadline; mark it as unassigned or not specified. Then draft an Outlook email to the attendees with the decisions first, owners and dates second, and open questions last. End by asking recipients to correct anything that does not match their understanding.</pre>
         </div>
         <div class="prompt-card">
-          <div class="prompt-header"><h4>Shareable version</h4><button class="copy-button" type="button" data-copy="follow-through-follow">Copy</button></div>
-          <pre id="follow-through-follow">Rewrite this as a concise Teams post. Put the decision first, then owners and dates, then open questions. End by asking participants to correct anything that does not match their understanding.</pre>
+          <div class="prompt-header"><h4>Open the draft in Outlook</h4><button class="copy-button" type="button" data-copy="follow-through-follow">Copy</button></div>
+          <pre id="follow-through-follow">Make the email concise and executive-ready. Use a clear subject line and keep the body under 250 words.</pre>
         </div>
-        <div class="ga-note"><strong>Availability note:</strong> Meeting summaries and post-meeting insights depend on licensing, meeting policy, and whether transcription or the applicable Copilot meeting experience was enabled.</div>
+        <ol class="steps">
+          <li><div><strong>Review the generated email card</strong> in Copilot Chat and confirm the recipients, subject, decisions, owners, and dates.</div></li>
+          <li><div><strong>Select Open</strong> to continue editing the generated draft in Outlook.</div></li>
+          <li><div><strong>Edit and send</strong> only after confirming the draft against the meeting record.</div></li>
+        </ol>
+        <div class="ga-note"><strong>Availability note:</strong> Use a meeting that was transcribed or recorded so Copilot can ground the recap and follow-up in the meeting content.</div>
       </section>
 
       <section class="panel" data-panel="7">
@@ -771,6 +874,8 @@
         <a href="https://learn.microsoft.com/en-us/training/modules/analyze-visualize-data-copilot/" target="_blank" rel="noreferrer">Analyze and visualize data</a>
         <a href="https://learn.microsoft.com/en-us/training/modules/copilot-meeting-productivity/" target="_blank" rel="noreferrer">Meeting productivity</a>
         <a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/researcher-agent" target="_blank" rel="noreferrer">Researcher agent</a>
+        <a href="https://support.microsoft.com/en-us/Microsoft-365-Copilot/refer-to-specific-files-and-more-in-microsoft-365-copilot" target="_blank" rel="noreferrer">Reference a specific meeting</a>
+        <a href="https://support.microsoft.com/en-us/office/bizchat-overview/draft-and-send-email-using-microsoft-365-copilot-chat" target="_blank" rel="noreferrer">Draft and open email in Outlook</a>
         <span class="ga-stamp">GA-only design</span>
       </div>
       <div class="resource-block">
