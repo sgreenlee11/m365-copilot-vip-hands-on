@@ -19,6 +19,30 @@ copyButtons.forEach((button) => {
   });
 });
 
+document.querySelectorAll('a[download][href$=".xlsx"]').forEach((link) => {
+  link.addEventListener("click", async (event) => {
+    if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    link.setAttribute("aria-busy", "true");
+    try {
+      const response = await fetch(link.href, { credentials: "same-origin" });
+      if (!response.ok) throw new Error(`Download failed with status ${response.status}`);
+      const objectUrl = URL.createObjectURL(await response.blob());
+      const downloadLink = document.createElement("a");
+      downloadLink.href = objectUrl;
+      downloadLink.download = decodeURIComponent(new URL(link.href).pathname.split("/").pop());
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      downloadLink.remove();
+      setTimeout(() => URL.revokeObjectURL(objectUrl), 1000);
+    } catch {
+      window.location.assign(link.href);
+    } finally {
+      link.removeAttribute("aria-busy");
+    }
+  });
+});
+
 const panels = Array.from(document.querySelectorAll("[data-activity]"));
 const links = Array.from(document.querySelectorAll("[data-activity-link]"));
 const prev = document.querySelector("[data-guide-prev]");

@@ -769,7 +769,7 @@
         <div class="kicker">Activity 5 · 12 minutes</div>
         <h2>Analyze: test the story.</h2>
         <p class="lede">Move from communication signals to business evidence. Choose one route; each uses a different dataset and a prompt designed for that tool and business question.</p>
-        <p class="route-intro"><strong>Copilot in Excel</strong>Open the <a href="../assets/Demo_Weekly_Store_Product_Performance.xlsx" download>performance workbook</a> in Excel to compare regions, store groups, and products.</p>
+        <p class="route-intro"><strong>Copilot in Excel</strong>Open the <a href="../assets/Demo_Weekly_Store_Product_Performance.xlsx" download="Demo_Weekly_Store_Product_Performance.xlsx">performance workbook</a> in Excel to compare regions, store groups, and products.</p>
         <div class="prompt-card">
           <div class="prompt-header"><h3>Copilot in Excel prompt</h3><button class="copy-button" type="button" data-copy="excel-analysis-prompt">Copy</button></div>
           <pre id="excel-analysis-prompt">Analyze this weekly store and product performance data to identify where leadership attention would have the greatest impact this week. Compare regions, store groups, and products; identify meaningful outliers and trends; and show the evidence behind each finding. Recommend three actions and the additional information needed before making a final decision. Create a visualization that makes the most important comparison easy to understand.</pre>
@@ -869,7 +869,7 @@
       <div class="resource-block">
         <h3>Practice data</h3>
         <a href="../">Return to current live workshop</a>
-        <a href="../assets/Demo_Weekly_Store_Product_Performance.xlsx" download>Store performance workbook</a>
+        <a href="../assets/Demo_Weekly_Store_Product_Performance.xlsx" download="Demo_Weekly_Store_Product_Performance.xlsx">Store performance workbook</a>
         <a href="../assets/Demo_Customer_Feedback.csv" download>Customer feedback CSV</a>
         <a href="../assets/executive_use_case_prompts.csv" download>Executive prompt inventory</a>
       </div>
@@ -892,6 +892,30 @@
   </div>
 
   <script>
+    document.querySelectorAll('a[download][href$=".xlsx"]').forEach((link) => {
+      link.addEventListener("click", async (event) => {
+        if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+        event.preventDefault();
+        link.setAttribute("aria-busy", "true");
+        try {
+          const response = await fetch(link.href, { credentials: "same-origin" });
+          if (!response.ok) throw new Error(`Download failed with status ${response.status}`);
+          const objectUrl = URL.createObjectURL(await response.blob());
+          const downloadLink = document.createElement("a");
+          downloadLink.href = objectUrl;
+          downloadLink.download = decodeURIComponent(new URL(link.href).pathname.split("/").pop());
+          document.body.appendChild(downloadLink);
+          downloadLink.click();
+          downloadLink.remove();
+          setTimeout(() => URL.revokeObjectURL(objectUrl), 1000);
+        } catch {
+          window.location.assign(link.href);
+        } finally {
+          link.removeAttribute("aria-busy");
+        }
+      });
+    });
+
     const panels = [...document.querySelectorAll("[data-panel]")];
     const navButtons = [...document.querySelectorAll("[data-nav]")];
     const progressLabel = document.getElementById("progress-label");
