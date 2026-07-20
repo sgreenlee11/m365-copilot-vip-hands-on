@@ -229,6 +229,17 @@
       font-weight: 900;
     }
 
+    .formula-card .ingredient-goal { color: white; background: #d94f00; }
+    .formula-card .ingredient-context { color: white; background: #176b87; }
+    .formula-card .ingredient-source { color: white; background: #2f6f44; }
+    .formula-card .ingredient-expectations { color: white; background: #8f2d56; }
+
+    .prompt-ingredient { font-weight: 900; }
+    .prompt-ingredient.ingredient-goal { color: #d94f00; }
+    .prompt-ingredient.ingredient-context { color: #176b87; }
+    .prompt-ingredient.ingredient-source { color: #2f6f44; }
+    .prompt-ingredient.ingredient-expectations { color: #8f2d56; }
+
     .check-list {
       display: grid;
       gap: 0.7rem;
@@ -696,7 +707,6 @@
 
     <main class="stage" aria-live="polite">
       <section class="panel legacy-panel is-active" data-panel="0">
-        <div class="legacy-kicker">Activity 1</div>
         <h2 id="activity-title">Welcome and objectives</h2>
         <p class="legacy-lede">This is a practical lab for copying, adapting, and using executive-ready Microsoft 365 Copilot prompts. Use your own work context when possible; fallback demo data is fictional.</p>
         <div class="objective-list">
@@ -713,11 +723,11 @@
         <h2>The prompting pattern</h2>
         <p class="legacy-lede">Strong prompts give Copilot a clear goal, relevant context, the sources it should use, and clear expectations for the response.</p>
         <div class="formula-card">
-          <span>Goal</span><span>Context</span><span>Source</span><span>Expectations</span>
+          <span class="ingredient-goal">Goal</span><span class="ingredient-context">Context</span><span class="ingredient-source">Source</span><span class="ingredient-expectations">Expectations</span>
         </div>
         <div class="prompt-card">
           <div class="prompt-header"><h3>Worked example</h3><button class="copy-button" type="button" data-copy="prompt-pattern">Copy</button></div>
-          <pre id="prompt-pattern">Summarize the three most important performance risks for my upcoming regional business review. Focus on issues that require a leadership decision this week. Use the attached store performance workbook as the source. Format the response as a concise executive briefing with evidence and recommended actions.</pre>
+          <pre id="prompt-pattern"><span class="prompt-ingredient ingredient-goal">Draft a concise update for my leadership team.</span> <span class="prompt-ingredient ingredient-context">We are reviewing progress on a high-priority initiative and need to align on the next step.</span> <span class="prompt-ingredient ingredient-source">Use the priorities and constraints I provide in this prompt.</span> <span class="prompt-ingredient ingredient-expectations">Format the response as three key points, one decision needed, and a recommended next action.</span></pre>
         </div>
         <ul class="check-list">
           <li>State the goal clearly: what do you want Copilot to accomplish?</li>
