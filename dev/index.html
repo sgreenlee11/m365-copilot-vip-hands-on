@@ -516,6 +516,20 @@
     .choice-card h3 { margin-bottom: 0.55rem; }
     .choice-card p { color: var(--muted); }
 
+    .route-intro {
+      margin: 1.5rem 0 0.65rem;
+      padding-top: 1.25rem;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+    }
+
+    .route-intro strong {
+      display: block;
+      margin-bottom: 0.25rem;
+      color: var(--ink);
+      font-size: 1.12rem;
+    }
+
     .source-link {
       display: inline-block;
       margin-top: 0.7rem;
@@ -739,7 +753,6 @@
         <div class="kicker">Activity 4 · 7 minutes</div>
         <h2>Prepare: enter informed.</h2>
         <p class="lede">Use Copilot with an upcoming meeting and the content available to you in Teams or Outlook. The goal is not a generic agenda—it is a sharper leadership posture.</p>
-        <div class="meta"><span>Teams or Outlook</span><span>Meeting context</span><span>Questions and tensions</span></div>
         <div class="activity-note"><strong>Point Copilot to the meeting:</strong> In Copilot Chat, make sure <strong>Work IQ</strong> is on. Select <strong>Add work content</strong> in the prompt box, or type <strong>/</strong>. Choose <strong>Meetings</strong>, search by meeting title or organizer, and select the meeting. It will appear as a reference in the prompt.</div>
         <ol class="steps">
           <li><div><strong>Choose a real upcoming meeting</strong> and add it to the prompt using the Work IQ steps above.</div></li>
@@ -757,26 +770,14 @@
         <div class="kicker">Activity 5 · 12 minutes</div>
         <h2>Analyze: test the story.</h2>
         <p class="lede">Move from communication signals to business evidence. Choose one route; each uses a different dataset and a prompt designed for that tool and business question.</p>
-        <div class="choice-grid">
-          <article class="choice-card">
-            <span class="pill orange">Core route</span>
-            <h3>Copilot in Excel</h3>
-            <p>Use structured performance data to compare regions, store groups, and products, then visualize the most important result.</p>
-            <a class="source-link" href="../assets/Demo_Weekly_Store_Product_Performance.xlsx" download>Download performance workbook</a>
-          </article>
-          <article class="choice-card">
-            <span class="pill">First-party agent route</span>
-            <h3>Analyst</h3>
-            <p>Use customer comments to identify recurring themes, affected experiences, and evidence-backed intervention priorities.</p>
-            <a class="source-link" href="../assets/Demo_Customer_Feedback.csv" download>Download customer feedback data</a>
-          </article>
-        </div>
+        <p class="route-intro"><strong>Copilot in Excel</strong>Open the <a href="../assets/Demo_Weekly_Store_Product_Performance.xlsx" download>performance workbook</a> in Excel to compare regions, store groups, and products.</p>
         <div class="prompt-card">
-          <div class="prompt-header"><h3>Route A · Copilot in Excel</h3><button class="copy-button" type="button" data-copy="excel-analysis-prompt">Copy</button></div>
+          <div class="prompt-header"><h3>Copilot in Excel prompt</h3><button class="copy-button" type="button" data-copy="excel-analysis-prompt">Copy</button></div>
           <pre id="excel-analysis-prompt">Analyze this weekly store and product performance data to identify where leadership attention would have the greatest impact this week. Compare regions, store groups, and products; identify meaningful outliers and trends; and show the evidence behind each finding. Recommend three actions and the additional information needed before making a final decision. Create a visualization that makes the most important comparison easy to understand.</pre>
         </div>
+        <p class="route-intro"><strong>Analyst</strong>Open Analyst in Microsoft 365 Copilot and attach the <a href="../assets/Demo_Customer_Feedback.csv" download>customer feedback data</a> to identify recurring themes and intervention priorities.</p>
         <div class="prompt-card">
-          <div class="prompt-header"><h3>Route B · Analyst</h3><button class="copy-button" type="button" data-copy="analyst-analysis-prompt">Copy</button></div>
+          <div class="prompt-header"><h3>Analyst prompt</h3><button class="copy-button" type="button" data-copy="analyst-analysis-prompt">Copy</button></div>
           <pre id="analyst-analysis-prompt">Analyze this customer feedback data to identify the issues most likely to require executive intervention. Group comments into recurring themes, quantify how often each theme appears, identify the stores, regions, products, or service moments most affected, and include representative evidence. Recommend the three intervention priorities with the expected customer or operational benefit of each. Clearly identify limitations or missing context in the data.</pre>
         </div>
         <div class="prompt-card">
@@ -787,21 +788,28 @@
           <div class="prompt-header"><h4>Pressure-test either route</h4><button class="copy-button" type="button" data-copy="analysis-follow">Copy</button></div>
           <pre id="analysis-follow">Argue against your leading recommendation. What alternative explanation, missing data, or risk could change the decision?</pre>
         </div>
+        <div class="activity-note"><strong>Required final step:</strong> After reviewing and correcting the analysis, run the handoff prompt below. This creates the common input used in Activity 6, regardless of which route or dataset you chose.</div>
+        <div class="prompt-card">
+          <div class="prompt-header"><h3>Create the Activity 6 handoff</h3><button class="copy-button" type="button" data-copy="analysis-handoff">Copy</button></div>
+          <pre id="analysis-handoff">Create a Decision Brief Handoff from this analysis. Include: the decision question; three findings supported by the source data; the evidence for each finding; the recommended action; two risks or counterarguments; and unresolved questions. Keep it under 350 words. Mark any unsupported or uncertain item as Needs validation.</pre>
+        </div>
       </section>
 
       <section class="panel" data-panel="5">
         <div class="kicker">Activity 6 · 8 minutes</div>
-        <h2>Create: build the decision brief.</h2>
-        <p class="lede">Use one prescribed handoff: move the verified analysis into Word and turn it into a one-page brief for leadership review.</p>
+        <h2>Create: turn the handoff into a brief.</h2>
+        <p class="lede">Every Activity 5 route ends with the same Decision Brief Handoff. Use that short, structured block as the input for Copilot in Word.</p>
         <ol class="steps">
-          <li><div><strong>Finalize the analysis.</strong> Review the evidence, correct errors, and keep only findings you are prepared to stand behind.</div></li>
-          <li><div><strong>Open a new Word document.</strong> Open Copilot in Word and select the option to draft content.</div></li>
-          <li><div><strong>Provide the handoff.</strong> Paste the verified analysis into the prompt, or reference the saved analysis/source file when that option is available.</div></li>
-          <li><div><strong>Generate and edit.</strong> Run the prompt below, then review every number, recommendation, and source before sharing.</div></li>
+          <li><div><strong>Return to Activity 5.</strong> Copy the Decision Brief Handoff created by the required final prompt.</div></li>
+          <li><div><strong>Open a blank Word document.</strong> Open Copilot in Word and choose to draft content.</div></li>
+          <li><div><strong>Paste the prompt below.</strong> Replace the bracketed placeholder with your Decision Brief Handoff.</div></li>
+          <li><div><strong>Review the document.</strong> Confirm every fact against the source data before sharing the brief.</div></li>
         </ol>
         <div class="prompt-card">
           <div class="prompt-header"><h3>Executive decision brief</h3><button class="copy-button" type="button" data-copy="create-prompt">Copy</button></div>
-          <pre id="create-prompt">Using the verified analysis included with this prompt, draft a one-page executive decision brief. Use the sections Situation, Evidence, Options, Recommendation, Risks, and Decision Needed. Keep the tone direct and neutral. Preserve important numbers, identify the source of factual claims, and flag anything that still requires validation.</pre>
+          <pre id="create-prompt">Using the Decision Brief Handoff below, draft a one-page executive decision brief. Use the sections Situation, Evidence, Options, Recommendation, Risks, and Decision Needed. Keep the tone direct and neutral. Preserve important numbers and retain every Needs validation label.
+
+[Paste the Decision Brief Handoff from Activity 5 here]</pre>
         </div>
         <div class="prompt-card">
           <div class="prompt-header"><h4>Executive edit</h4><button class="copy-button" type="button" data-copy="create-follow">Copy</button></div>
@@ -814,7 +822,6 @@
         <div class="kicker">Activity 7 · 6 minutes</div>
         <h2>Follow through: make it accountable.</h2>
         <p class="lede">Point Copilot Chat to a specific past meeting, convert the discussion into explicit commitments, and open a ready-to-review follow-up draft in Outlook.</p>
-        <div class="meta"><span>Work IQ</span><span>Teams meeting recap</span><span>Decisions and owners</span><span>Outlook draft</span></div>
         <div class="activity-note"><strong>Add the specific meeting:</strong> In Copilot Chat, make sure <strong>Work IQ</strong> is on. Select <strong>Add work content</strong>, or type <strong>/</strong>. Choose <strong>Meetings</strong>, search by meeting title or organizer, and select the meeting before pasting the prompt.</div>
         <div class="prompt-card">
           <div class="prompt-header"><h3>Decision record and Outlook follow-up</h3><button class="copy-button" type="button" data-copy="follow-through-prompt">Copy</button></div>
