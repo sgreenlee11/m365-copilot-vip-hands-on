@@ -1,0 +1,843 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>DEV | Microsoft 365 Copilot Executive Decision Sprint</title>
+  <meta name="description" content="Development preview of a Level 100-200 Microsoft 365 Copilot workshop for executives.">
+  <style>
+    :root {
+      --orange: #f96302;
+      --orange-soft: #ffb783;
+      --ink: #17120f;
+      --cream: #f7f0e7;
+      --paper: #fffdf9;
+      --sage: #d8dfd0;
+      --blue: #163b4d;
+      --muted: #6f625a;
+      --line: rgba(23, 18, 15, 0.15);
+      --shadow: 0 24px 70px rgba(38, 25, 17, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      color: var(--ink);
+      background:
+        linear-gradient(115deg, transparent 0 72%, rgba(249, 99, 2, 0.07) 72% 100%),
+        repeating-linear-gradient(0deg, transparent 0 31px, rgba(23, 18, 15, 0.035) 31px 32px),
+        var(--cream);
+      font-family: "Aptos", "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+
+    button, a { font: inherit; }
+    a { color: inherit; }
+    button { color: inherit; }
+
+    .skip-link {
+      position: fixed;
+      top: 0.75rem;
+      left: -999px;
+      z-index: 200;
+      padding: 0.7rem 1rem;
+      color: white;
+      background: var(--ink);
+    }
+
+    .skip-link:focus { left: 0.75rem; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: grid;
+      grid-template-columns: minmax(230px, 1fr) minmax(250px, 580px) auto;
+      align-items: center;
+      gap: 1.5rem;
+      min-height: 76px;
+      padding: 0.85rem clamp(1rem, 3vw, 2.25rem);
+      color: white;
+      background: rgba(23, 18, 15, 0.96);
+      border-bottom: 4px solid var(--orange);
+      backdrop-filter: blur(12px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 1.25rem;
+      height: 1.25rem;
+      flex: 0 0 auto;
+      background: var(--orange);
+      transform: rotate(45deg);
+      box-shadow: 0 0 0 5px rgba(249, 99, 2, 0.2);
+    }
+
+    .brand strong,
+    .brand small { display: block; }
+    .brand strong { letter-spacing: 0.02em; }
+    .brand small { color: rgba(255,255,255,0.66); }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.4rem;
+      color: rgba(255,255,255,0.74);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .progress-track {
+      height: 0.45rem;
+      background: rgba(255,255,255,0.16);
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      display: block;
+      width: 12.5%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--orange), #ffad72);
+      transition: width 240ms ease;
+    }
+
+    .dev-badge {
+      padding: 0.45rem 0.65rem;
+      color: var(--ink);
+      background: #ffd400;
+      font-size: 0.72rem;
+      font-weight: 950;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transform: rotate(2deg);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 290px minmax(0, 1fr) 310px;
+      gap: 1.25rem;
+      width: min(1680px, 100%);
+      margin: 0 auto;
+      padding: 1.25rem;
+    }
+
+    .rail,
+    .resources {
+      position: sticky;
+      top: 100px;
+      align-self: start;
+      max-height: calc(100vh - 118px);
+      overflow: auto;
+    }
+
+    .rail {
+      padding: 1rem;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .rail-header {
+      padding: 0.5rem 0.45rem 1rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 0.6rem;
+      color: var(--orange);
+      font-size: 0.72rem;
+      font-weight: 950;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, h4 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.02;
+      letter-spacing: -0.035em;
+    }
+
+    h1 { font-size: 1.8rem; }
+    h2 { max-width: 970px; font-size: clamp(2.5rem, 5vw, 5.4rem); }
+    h3 { font-size: 1.45rem; }
+    h4 { font-size: 1.1rem; }
+
+    .nav {
+      display: grid;
+      gap: 0.35rem;
+      padding-top: 0.85rem;
+    }
+
+    .nav-button {
+      display: grid;
+      grid-template-columns: 2.1rem minmax(0, 1fr);
+      gap: 0.7rem;
+      align-items: center;
+      width: 100%;
+      padding: 0.7rem;
+      text-align: left;
+      background: transparent;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+
+    .nav-button:hover,
+    .nav-button:focus-visible { background: rgba(249, 99, 2, 0.09); }
+
+    .nav-button.is-active {
+      color: white;
+      background: var(--ink);
+    }
+
+    .nav-number {
+      display: grid;
+      place-items: center;
+      width: 2.1rem;
+      height: 2.1rem;
+      color: white;
+      background: var(--orange);
+      font-size: 0.75rem;
+      font-weight: 950;
+    }
+
+    .nav-button small {
+      display: block;
+      margin-top: 0.12rem;
+      color: var(--muted);
+    }
+
+    .nav-button.is-active small { color: rgba(255,255,255,0.68); }
+
+    .stage {
+      min-width: 0;
+      background: rgba(255,253,249,0.88);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .panel {
+      display: none;
+      min-height: calc(100vh - 170px);
+      padding: clamp(1.6rem, 4vw, 4.25rem);
+      overflow: hidden;
+    }
+
+    .panel.is-active {
+      display: block;
+      animation: reveal 280ms ease-out both;
+    }
+
+    @keyframes reveal {
+      from { transform: translateY(12px); }
+      to { transform: translateY(0); }
+    }
+
+    .kicker {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      width: fit-content;
+      margin-bottom: 1.15rem;
+      color: var(--orange);
+      font-size: 0.75rem;
+      font-weight: 950;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .kicker::before {
+      content: "";
+      width: 2.5rem;
+      height: 4px;
+      background: var(--orange);
+    }
+
+    .lede {
+      max-width: 880px;
+      margin: 1.35rem 0 2rem;
+      color: var(--muted);
+      font-size: clamp(1.08rem, 2vw, 1.4rem);
+    }
+
+    .hero-grid,
+    .capability-grid,
+    .choice-grid,
+    .output-grid {
+      display: grid;
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .hero-grid { grid-template-columns: repeat(3, 1fr); margin-top: 2rem; }
+    .capability-grid { grid-template-columns: repeat(3, 1fr); }
+    .choice-grid { grid-template-columns: repeat(2, 1fr); }
+    .output-grid { grid-template-columns: repeat(2, 1fr); }
+
+    .hero-grid article,
+    .capability-grid article,
+    .choice-card,
+    .output-grid article {
+      padding: 1.25rem;
+      background: var(--paper);
+    }
+
+    .hero-grid strong,
+    .capability-grid strong {
+      display: block;
+      margin-bottom: 0.25rem;
+      color: var(--orange);
+      font-size: 1.55rem;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .scenario-banner {
+      position: relative;
+      margin: 2rem 0;
+      padding: 1.5rem 1.6rem 1.5rem 2rem;
+      color: white;
+      background: var(--blue);
+      overflow: hidden;
+    }
+
+    .scenario-banner::after {
+      content: "DECIDE";
+      position: absolute;
+      right: -0.5rem;
+      bottom: -1.3rem;
+      color: rgba(255,255,255,0.08);
+      font: 900 5.5rem/1 Georgia, serif;
+      letter-spacing: -0.06em;
+    }
+
+    .scenario-banner p { max-width: 760px; margin: 0.5rem 0 0; }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin: 1.25rem 0;
+    }
+
+    .meta span,
+    .pill {
+      padding: 0.4rem 0.65rem;
+      background: var(--sage);
+      font-size: 0.78rem;
+      font-weight: 850;
+    }
+
+    .pill.orange { color: white; background: var(--orange); }
+
+    .prompt-card {
+      margin: 1.25rem 0;
+      background: white;
+      border: 1px solid var(--line);
+      box-shadow: 9px 9px 0 rgba(249, 99, 2, 0.12);
+    }
+
+    .prompt-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.8rem 1rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .prompt-header h3,
+    .prompt-header h4 { font-family: "Aptos", "Segoe UI", sans-serif; letter-spacing: 0; }
+
+    pre {
+      margin: 0;
+      padding: 1.2rem;
+      white-space: pre-wrap;
+      color: #2d241f;
+      font: 600 0.98rem/1.65 "Aptos", "Segoe UI", sans-serif;
+    }
+
+    .copy-button,
+    .guide-button {
+      border: 0;
+      cursor: pointer;
+      font-weight: 900;
+    }
+
+    .copy-button {
+      padding: 0.45rem 0.7rem;
+      color: white;
+      background: var(--ink);
+    }
+
+    .copy-button:hover,
+    .copy-button:focus-visible { background: var(--orange); }
+
+    .steps {
+      display: grid;
+      gap: 0.7rem;
+      margin: 1.4rem 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: steps;
+    }
+
+    .steps li {
+      display: grid;
+      grid-template-columns: 2.35rem minmax(0, 1fr);
+      gap: 0.8rem;
+      align-items: start;
+    }
+
+    .steps li::before {
+      counter-increment: steps;
+      content: counter(steps);
+      display: grid;
+      place-items: center;
+      width: 2.35rem;
+      height: 2.35rem;
+      color: white;
+      background: var(--orange);
+      font-weight: 950;
+    }
+
+    .steps strong { display: block; }
+
+    .reflection,
+    .ga-note {
+      margin-top: 1.5rem;
+      padding: 1rem 1.15rem;
+      border-left: 6px solid var(--orange);
+      background: rgba(249, 99, 2, 0.08);
+    }
+
+    .ga-note {
+      border-color: var(--blue);
+      background: rgba(22, 59, 77, 0.08);
+    }
+
+    .choice-card h3 { margin-bottom: 0.55rem; }
+    .choice-card p { color: var(--muted); }
+
+    .source-link {
+      display: inline-block;
+      margin-top: 0.7rem;
+      color: var(--blue);
+      font-size: 0.8rem;
+      font-weight: 850;
+    }
+
+    .resources {
+      padding: 1rem;
+      color: white;
+      background: var(--ink);
+      box-shadow: var(--shadow);
+    }
+
+    .resources h2 {
+      margin-bottom: 1rem;
+      font-size: 1.7rem;
+    }
+
+    .resource-block {
+      padding: 1rem 0;
+      border-top: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .resource-block h3 {
+      margin-bottom: 0.65rem;
+      color: var(--orange-soft);
+      font: 850 0.78rem/1.2 "Aptos", "Segoe UI", sans-serif;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .resource-block a {
+      display: block;
+      margin: 0.45rem 0;
+      color: rgba(255,255,255,0.82);
+      font-size: 0.88rem;
+    }
+
+    .resource-block a:hover { color: white; }
+
+    .ga-stamp {
+      display: inline-flex;
+      gap: 0.45rem;
+      align-items: center;
+      margin-top: 0.5rem;
+      padding: 0.45rem 0.6rem;
+      color: var(--ink);
+      background: var(--sage);
+      font-size: 0.72rem;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .ga-stamp::before {
+      content: "";
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 50%;
+      background: #138a4b;
+    }
+
+    .guide {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 2rem;
+      padding-top: 1.3rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .guide-button {
+      padding: 0.75rem 1rem;
+      color: white;
+      background: var(--orange);
+    }
+
+    .guide-button.secondary { color: var(--ink); background: var(--sage); }
+    .guide-button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .status { color: var(--muted); font-weight: 850; }
+
+    @media (max-width: 1180px) {
+      .layout { grid-template-columns: 260px minmax(0, 1fr); }
+      .resources { position: static; grid-column: 1 / -1; max-height: none; }
+      .resource-block { display: inline-block; width: 32%; vertical-align: top; padding-right: 1rem; }
+    }
+
+    @media (max-width: 780px) {
+      .topbar {
+        width: 100%;
+        min-width: 0;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 0.75rem;
+        padding-inline: 0.85rem;
+      }
+      .brand strong { font-size: 0.92rem; }
+      .brand small { font-size: 0.75rem; }
+      .topbar-progress { grid-column: 1 / -1; grid-row: 2; }
+      .layout,
+      .rail,
+      .stage,
+      .resources {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+      }
+      .layout { display: block; padding: 0.75rem; }
+      .rail { position: static; max-height: none; margin-bottom: 0.75rem; overflow: hidden; }
+      .nav { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .nav-button { display: block; width: auto; min-width: 0; padding: 0.45rem; text-align: center; }
+      .nav-button div:last-child { display: none; }
+      .nav-number { margin: auto; }
+      .dev-badge { display: none; }
+      .panel { min-height: auto; padding: 1.35rem; }
+      pre, h1, h2, h3, p, a { overflow-wrap: anywhere; }
+      .hero-grid, .capability-grid, .choice-grid, .output-grid { grid-template-columns: 1fr; }
+      .resource-block { display: block; width: auto; }
+      .guide { flex-wrap: wrap; }
+      h2 { font-size: clamp(2.3rem, 10vw, 3.1rem); }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#activity-title">Skip to activity</a>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <div><strong>Officer Copilot Lab</strong><small>Executive decision sprint</small></div>
+    </div>
+    <div class="topbar-progress">
+      <div class="progress-label"><span id="progress-label">Activity 1 of 8</span><span>50 minutes</span></div>
+      <div class="progress-track" aria-hidden="true"><span class="progress-fill" id="progress-fill"></span></div>
+    </div>
+    <span class="dev-badge">DEV preview</span>
+  </header>
+
+  <div class="layout">
+    <aside class="rail" aria-label="Workshop activities">
+      <div class="rail-header">
+        <p class="eyebrow">Level 100-200</p>
+        <h1>From signal to executive action</h1>
+      </div>
+      <nav class="nav">
+        <button class="nav-button is-active" type="button" data-nav="0"><span class="nav-number">01</span><div><strong>Briefing</strong><small>Mission and flow</small></div></button>
+        <button class="nav-button" type="button" data-nav="1"><span class="nav-number">02</span><div><strong>Prompt</strong><small>Direct the work</small></div></button>
+        <button class="nav-button" type="button" data-nav="2"><span class="nav-number">03</span><div><strong>Catch up</strong><small>Find the signal</small></div></button>
+        <button class="nav-button" type="button" data-nav="3"><span class="nav-number">04</span><div><strong>Prepare</strong><small>Enter informed</small></div></button>
+        <button class="nav-button" type="button" data-nav="4"><span class="nav-number">05</span><div><strong>Analyze</strong><small>Test the story</small></div></button>
+        <button class="nav-button" type="button" data-nav="5"><span class="nav-number">06</span><div><strong>Create</strong><small>Shape the message</small></div></button>
+        <button class="nav-button" type="button" data-nav="6"><span class="nav-number">07</span><div><strong>Follow through</strong><small>Make it accountable</small></div></button>
+        <button class="nav-button" type="button" data-nav="7"><span class="nav-number">08</span><div><strong>Lead responsibly</strong><small>Review and act</small></div></button>
+      </nav>
+    </aside>
+
+    <main class="stage" aria-live="polite">
+      <section class="panel is-active" data-panel="0">
+        <div class="kicker">Executive field briefing</div>
+        <h2 id="activity-title">One business day. Six Copilot moves.</h2>
+        <p class="lede">Instead of practicing six versions of summarization, this lab follows one executive decision from first signal to final communication.</p>
+        <div class="scenario-banner">
+          <h3>The challenge</h3>
+          <p>Regional performance has softened while customer comments point to product availability and service friction. Your leadership meeting begins shortly. What changed, what matters, and what should the organization do next?</p>
+        </div>
+        <div class="hero-grid">
+          <article><strong>Ask</strong><span>Catch up across your work and identify the signal.</span></article>
+          <article><strong>Decide</strong><span>Interrogate data and turn evidence into a recommendation.</span></article>
+          <article><strong>Act</strong><span>Create the message and capture accountable follow-through.</span></article>
+        </div>
+        <div class="ga-note"><strong>Scope guardrail:</strong> Every demonstrated capability is documented as generally available Microsoft 365 Copilot functionality. No Frontier or preview features are required.</div>
+      </section>
+
+      <section class="panel" data-panel="1">
+        <div class="kicker">Activity 2 · 5 minutes</div>
+        <h2>Prompt for a decision—not a paragraph.</h2>
+        <p class="lede">Give Copilot a goal, the context that changes the answer, the source of truth, and the shape of a useful response.</p>
+        <div class="capability-grid">
+          <article><strong>Goal</strong><span>What outcome do you need?</span></article>
+          <article><strong>Context</strong><span>What should influence the answer?</span></article>
+          <article><strong>Source</strong><span>Where should Copilot look?</span></article>
+          <article><strong>Expectations</strong><span>What format and level of detail?</span></article>
+          <article><strong>Evidence</strong><span>What facts support the conclusion?</span></article>
+          <article><strong>Judgment</strong><span>What must you verify or decide?</span></article>
+        </div>
+        <div class="prompt-card">
+          <div class="prompt-header"><h3>Executive prompt pattern</h3><button class="copy-button" type="button" data-copy="prompt-pattern">Copy</button></div>
+          <pre id="prompt-pattern">Help me decide [the decision]. The situation is [relevant context and constraints]. Use [specific files, messages, meetings, or data] as the source. Identify the strongest evidence, competing interpretations, risks, and missing information. Recommend a course of action and format it as [desired output]. Clearly distinguish facts from assumptions.</pre>
+        </div>
+        <p class="reflection"><strong>Facilitator move:</strong> Ask participants which phrase makes this prompt safer and more useful than “summarize this.”</p>
+      </section>
+
+      <section class="panel" data-panel="2">
+        <div class="kicker">Activity 3 · 7 minutes</div>
+        <h2>Catch up: find the signal.</h2>
+        <p class="lede">Use Microsoft 365 Copilot Chat to synthesize recent work context, then narrow the response to decisions and risks.</p>
+        <div class="meta"><span>Copilot Chat</span><span>Work content</span><span>Executive triage</span></div>
+        <ol class="steps">
+          <li><div><strong>Set your scope.</strong> Replace the bracketed areas with the functions or stakeholders you own.</div></li>
+          <li><div><strong>Run the prompt.</strong> Review the sources Copilot provides and open at least one supporting item.</div></li>
+          <li><div><strong>Challenge the result.</strong> Ask what is uncertain, contradictory, or missing.</div></li>
+        </ol>
+        <div class="prompt-card">
+          <div class="prompt-header"><h3>Leadership signal scan</h3><button class="copy-button" type="button" data-copy="catch-up-prompt">Copy</button></div>
+          <pre id="catch-up-prompt">Review my work from the past five business days related to [operations, customers, products, people, finance, or another area]. Identify the five developments most likely to require executive attention. For each, explain what changed, why it matters now, the decision or intervention that may be needed, and the source supporting the finding. Separate confirmed facts from possible implications.</pre>
+        </div>
+        <div class="prompt-card">
+          <div class="prompt-header"><h4>Pressure-test follow-up</h4><button class="copy-button" type="button" data-copy="catch-up-follow">Copy</button></div>
+          <pre id="catch-up-follow">Which of these findings has the weakest evidence or conflicting signals? Show me what I should verify before acting.</pre>
+        </div>
+        <p class="reflection"><strong>Reflection:</strong> Did Copilot surface a decision, or merely organize information?</p>
+      </section>
+
+      <section class="panel" data-panel="3">
+        <div class="kicker">Activity 4 · 7 minutes</div>
+        <h2>Prepare: enter informed.</h2>
+        <p class="lede">Use Copilot with an upcoming meeting and the content available to you in Teams or Outlook. The goal is not a generic agenda—it is a sharper leadership posture.</p>
+        <div class="meta"><span>Teams or Outlook</span><span>Meeting context</span><span>Questions and tensions</span></div>
+        <ol class="steps">
+          <li><div><strong>Choose a real upcoming meeting</strong> with enough existing context to make the exercise useful.</div></li>
+          <li><div><strong>Use Copilot in the meeting workflow</strong> to review relevant context available to you.</div></li>
+          <li><div><strong>Verify participant positions</strong> before treating them as fact.</div></li>
+        </ol>
+        <div class="prompt-card">
+          <div class="prompt-header"><h3>Leadership meeting pre-read</h3><button class="copy-button" type="button" data-copy="meeting-prompt">Copy</button></div>
+          <pre id="meeting-prompt">Prepare me for [meeting name]. Summarize the purpose, recent developments connected to the agenda, and any decisions that appear to be needed. Identify the participants whose input will be important, but do not infer a person's position unless it is supported by available content. End with three questions I should ask and two assumptions the group should test.</pre>
+        </div>
+        <p class="reflection"><strong>Engagement moment:</strong> Pair up and compare the questions Copilot proposed. Which one would materially improve the meeting?</p>
+      </section>
+
+      <section class="panel" data-panel="4">
+        <div class="kicker">Activity 5 · 12 minutes</div>
+        <h2>Analyze: test the story.</h2>
+        <p class="lede">Move from communication signals to business evidence. Participants choose the familiar Excel route or a first-party agent route.</p>
+        <div class="choice-grid">
+          <article class="choice-card">
+            <span class="pill orange">Core route</span>
+            <h3>Copilot in Excel</h3>
+            <p>Open the performance workbook in Excel. Ask Copilot to identify trends, compare segments, and visualize the evidence.</p>
+            <a class="source-link" href="../assets/Demo_Weekly_Store_Product_Performance.xlsx" download>Download performance workbook</a>
+          </article>
+          <article class="choice-card">
+            <span class="pill">First-party agent route</span>
+            <h3>Analyst</h3>
+            <p>Use Analyst in Microsoft 365 Copilot to explore the workbook with natural-language questions and produce a structured analysis.</p>
+            <a class="source-link" href="../assets/Demo_Customer_Feedback.csv" download>Download customer feedback data</a>
+          </article>
+        </div>
+        <div class="prompt-card">
+          <div class="prompt-header"><h3>Evidence-to-decision analysis</h3><button class="copy-button" type="button" data-copy="analysis-prompt">Copy</button></div>
+          <pre id="analysis-prompt">Analyze this performance data to determine where leadership attention would have the greatest impact this week. Compare regions, store groups, and products; identify meaningful outliers and trends; and show the evidence behind each finding. Then propose three actions, the expected benefit of each, and the additional information needed before making a final decision. Create a visualization that makes the most important comparison easy to understand.</pre>
+        </div>
+        <div class="prompt-card">
+          <div class="prompt-header"><h4>Decision follow-up</h4><button class="copy-button" type="button" data-copy="analysis-follow">Copy</button></div>
+          <pre id="analysis-follow">Argue against your leading recommendation. What alternative explanation or risk could change the decision?</pre>
+        </div>
+      </section>
+
+      <section class="panel" data-panel="5">
+        <div class="kicker">Activity 6 · 8 minutes</div>
+        <h2>Create: shape the message.</h2>
+        <p class="lede">The analysis is not the deliverable. Turn it into communication that fits the audience and the moment.</p>
+        <div class="output-grid">
+          <article><h3>Word</h3><p>Draft a one-page executive decision brief from the analysis.</p></article>
+          <article><h3>PowerPoint</h3><p>Create a short leadership narrative or slide outline using the source material.</p></article>
+          <article><h3>Outlook</h3><p>Draft a concise request for alignment or approval.</p></article>
+          <article><h3>Teams</h3><p>Translate the decision into a clear leadership update.</p></article>
+        </div>
+        <div class="prompt-card">
+          <div class="prompt-header"><h3>Executive decision brief</h3><button class="copy-button" type="button" data-copy="create-prompt">Copy</button></div>
+          <pre id="create-prompt">Using the analysis and source material, draft a one-page executive decision brief. Use the sections Situation, Evidence, Options, Recommendation, Risks, and Decision Needed. Keep the tone direct and neutral. Preserve important numbers, cite or identify the source of factual claims, and flag anything that still requires validation.</pre>
+        </div>
+        <div class="prompt-card">
+          <div class="prompt-header"><h4>Audience shift</h4><button class="copy-button" type="button" data-copy="create-follow">Copy</button></div>
+          <pre id="create-follow">Now adapt this for [store leaders / the board / associates / a vendor]. Change the level of detail and language without changing the underlying facts or recommendation.</pre>
+        </div>
+        <p class="reflection"><strong>Reflection:</strong> What changed when the audience changed—and what should not have changed?</p>
+      </section>
+
+      <section class="panel" data-panel="6">
+        <div class="kicker">Activity 7 · 6 minutes</div>
+        <h2>Follow through: make it accountable.</h2>
+        <p class="lede">Use Copilot in Teams to review a meeting summary or transcript and convert discussion into explicit commitments.</p>
+        <div class="meta"><span>Teams meeting recap</span><span>Decisions</span><span>Owners</span><span>Open questions</span></div>
+        <div class="prompt-card">
+          <div class="prompt-header"><h3>Decision and owner record</h3><button class="copy-button" type="button" data-copy="follow-through-prompt">Copy</button></div>
+          <pre id="follow-through-prompt">Using this meeting's available recap or transcript, create a decision and owner record. Include decisions made, action items with the named owner and stated due date, unresolved questions, and items that were discussed but not decided. Do not invent an owner or deadline when one was not stated; mark it as unassigned or not specified.</pre>
+        </div>
+        <div class="prompt-card">
+          <div class="prompt-header"><h4>Shareable version</h4><button class="copy-button" type="button" data-copy="follow-through-follow">Copy</button></div>
+          <pre id="follow-through-follow">Rewrite this as a concise Teams post. Put the decision first, then owners and dates, then open questions. End by asking participants to correct anything that does not match their understanding.</pre>
+        </div>
+        <div class="ga-note"><strong>Availability note:</strong> Meeting summaries and post-meeting insights depend on licensing, meeting policy, and whether transcription or the applicable Copilot meeting experience was enabled.</div>
+      </section>
+
+      <section class="panel" data-panel="7">
+        <div class="kicker">Activity 8 · 5 minutes</div>
+        <h2>Lead responsibly.</h2>
+        <p class="lede">Copilot accelerates preparation and production. Executive accountability remains with the person who acts on the output.</p>
+        <div class="capability-grid">
+          <article><strong>Verify</strong><span>Open sources and confirm names, dates, numbers, and quotations.</span></article>
+          <article><strong>Separate</strong><span>Distinguish facts, interpretations, assumptions, and recommendations.</span></article>
+          <article><strong>Protect</strong><span>Use content only within its intended permissions and business context.</span></article>
+          <article><strong>Challenge</strong><span>Ask for counterarguments, missing evidence, and alternate explanations.</span></article>
+          <article><strong>Edit</strong><span>Apply your judgment to tone, audience, and organizational implications.</span></article>
+          <article><strong>Own</strong><span>The decision and communication remain yours—not Copilot's.</span></article>
+        </div>
+        <div class="scenario-banner">
+          <h3>Your next move</h3>
+          <p>Choose one recurring executive workflow. Redesign it as a sequence: catch up, prepare, analyze, decide, create, and follow through.</p>
+        </div>
+        <p class="reflection"><strong>Close:</strong> Where could Copilot improve the quality of a decision—not just the speed of a task?</p>
+      </section>
+
+      <footer class="guide">
+        <button class="guide-button secondary" type="button" id="previous">Previous</button>
+        <span class="status" id="status">Activity 1 of 8</span>
+        <button class="guide-button" type="button" id="next">Continue</button>
+      </footer>
+    </main>
+
+    <aside class="resources" aria-label="Workshop resources">
+      <h2>Field kit</h2>
+      <div class="resource-block">
+        <h3>Practice data</h3>
+        <a href="../">Return to current live workshop</a>
+        <a href="../assets/Demo_Weekly_Store_Product_Performance.xlsx" download>Store performance workbook</a>
+        <a href="../assets/Demo_Customer_Feedback.csv" download>Customer feedback CSV</a>
+        <a href="../assets/executive_use_case_prompts.csv" download>Executive prompt inventory</a>
+      </div>
+      <div class="resource-block">
+        <h3>Microsoft Learn grounding</h3>
+        <a href="https://learn.microsoft.com/en-us/training/modules/ask-analyze-content-with-microsoft-copilot-microsoft-365/" target="_blank" rel="noreferrer">Ask and analyze content</a>
+        <a href="https://learn.microsoft.com/en-us/training/modules/create-draft-content-with-microsoft-copilot-microsoft-365/" target="_blank" rel="noreferrer">Create and draft content</a>
+        <a href="https://learn.microsoft.com/en-us/training/modules/analyze-visualize-data-copilot/" target="_blank" rel="noreferrer">Analyze and visualize data</a>
+        <a href="https://learn.microsoft.com/en-us/training/modules/copilot-meeting-productivity/" target="_blank" rel="noreferrer">Meeting productivity</a>
+        <a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/researcher-agent" target="_blank" rel="noreferrer">Researcher agent</a>
+        <span class="ga-stamp">GA-only design</span>
+      </div>
+      <div class="resource-block">
+        <h3>Optional extension</h3>
+        <p>Researcher can replace the standard catch-up when the executive needs a deeper, source-cited report across work and web content.</p>
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    const panels = [...document.querySelectorAll("[data-panel]")];
+    const navButtons = [...document.querySelectorAll("[data-nav]")];
+    const progressLabel = document.getElementById("progress-label");
+    const progressFill = document.getElementById("progress-fill");
+    const status = document.getElementById("status");
+    const previous = document.getElementById("previous");
+    const next = document.getElementById("next");
+    let current = 0;
+
+    function setActivity(index, updateHash = true) {
+      current = Math.max(0, Math.min(index, panels.length - 1));
+      panels.forEach((panel, panelIndex) => panel.classList.toggle("is-active", panelIndex === current));
+      navButtons.forEach((button, buttonIndex) => button.classList.toggle("is-active", buttonIndex === current));
+      const label = `Activity ${current + 1} of ${panels.length}`;
+      progressLabel.textContent = label;
+      status.textContent = label;
+      progressFill.style.width = `${((current + 1) / panels.length) * 100}%`;
+      previous.disabled = current === 0;
+      next.textContent = current === panels.length - 1 ? "Restart" : "Continue";
+      if (updateHash) {
+        history.replaceState(null, "", `#activity-${current + 1}`);
+        document.querySelector(".stage").scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+
+    navButtons.forEach((button) => button.addEventListener("click", () => setActivity(Number(button.dataset.nav))));
+    previous.addEventListener("click", () => setActivity(current - 1));
+    next.addEventListener("click", () => setActivity(current === panels.length - 1 ? 0 : current + 1));
+
+    document.querySelectorAll("[data-copy]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        const target = document.getElementById(button.dataset.copy);
+        if (!target) return;
+        const original = button.textContent;
+        try {
+          await navigator.clipboard.writeText(target.textContent.trim());
+          button.textContent = "Copied";
+        } catch {
+          const selection = window.getSelection();
+          const range = document.createRange();
+          range.selectNodeContents(target);
+          selection.removeAllRanges();
+          selection.addRange(range);
+          button.textContent = "Selected";
+        }
+        setTimeout(() => { button.textContent = original; }, 1400);
+      });
+    });
+
+    window.addEventListener("keydown", (event) => {
+      if (event.target.closest("button, a, input, textarea, select, pre")) return;
+      if (event.key === "ArrowRight" || event.key === "PageDown") setActivity(current + 1);
+      if (event.key === "ArrowLeft" || event.key === "PageUp") setActivity(current - 1);
+    });
+
+    const hashMatch = location.hash.match(/activity-(\d+)/);
+    setActivity(hashMatch ? Number(hashMatch[1]) - 1 : 0, false);
+  </script>
+</body>
+</html>
