@@ -541,6 +541,25 @@
       font-size: 1.12rem;
     }
 
+    .new-chat-note {
+      margin: 1rem 0;
+      padding: 0.75rem 0.9rem;
+      color: var(--blue);
+      background: rgba(22, 59, 77, 0.07);
+      border: 1px solid rgba(22, 59, 77, 0.2);
+      font-size: 0.9rem;
+    }
+
+    .access-steps {
+      display: grid;
+      gap: 0.35rem;
+      margin: 0.65rem 0 1rem;
+      padding-left: 1.25rem;
+      color: var(--muted);
+    }
+
+    .access-steps strong { color: var(--ink); }
+
     .source-link {
       display: inline-block;
       margin-top: 0.7rem;
@@ -742,6 +761,7 @@
         <div class="kicker">Activity 3 · 7 minutes</div>
         <h2>Catch up: find the signal.</h2>
         <p class="lede">Use Microsoft 365 Copilot Chat to synthesize recent work context, then narrow the response to decisions and risks.</p>
+        <div class="new-chat-note"><strong>Start a new chat</strong> before running this exercise so context from the worked example does not influence the response.</div>
         <ol class="steps">
           <li><div><strong>Set your scope.</strong> Replace the bracketed areas with the functions or stakeholders you own.</div></li>
           <li><div><strong>Run the prompt.</strong> Review the sources Copilot provides and open at least one supporting item.</div></li>
@@ -762,6 +782,7 @@
         <div class="kicker">Activity 4 · 7 minutes</div>
         <h2>Prepare: enter informed.</h2>
         <p class="lede">Use Copilot with an upcoming meeting and the content available to you in Teams or Outlook. The goal is not a generic agenda—it is a sharper leadership posture.</p>
+        <div class="new-chat-note"><strong>Start a new chat</strong> before adding the meeting so the preparation is grounded only in the meeting and its related work context.</div>
         <div class="activity-note"><strong>Point Copilot to the meeting:</strong> In Copilot Chat, make sure <strong>Work IQ</strong> is on. Select <strong>Add work content</strong> in the prompt box, or type <strong>/</strong>. Choose <strong>Meetings</strong>, search by meeting title or organizer, and select the meeting. It will appear as a reference in the prompt.</div>
         <ol class="steps">
           <li><div><strong>Choose a real upcoming meeting</strong> and add it to the prompt using the Work IQ steps above.</div></li>
@@ -779,12 +800,22 @@
         <div class="kicker">Activity 5 · 12 minutes</div>
         <h2>Analyze: test the story.</h2>
         <p class="lede">Move from communication signals to business evidence. Choose one route; each uses a different dataset and a prompt designed for that tool and business question.</p>
-        <p class="route-intro"><strong>Copilot in Excel</strong>Open the <a href="../assets/Demo_Weekly_Store_Product_Performance.xlsx" download="Demo_Weekly_Store_Product_Performance.xlsx">performance workbook</a> in Excel to compare regions, store groups, and products.</p>
+        <p class="route-intro"><strong>Copilot in Excel</strong>Use the workbook directly in Excel to compare regions, store groups, and products.</p>
+        <ul class="access-steps">
+          <li>Download and open the <a href="../assets/Demo_Weekly_Store_Product_Performance.xlsx" download="Demo_Weekly_Store_Product_Performance.xlsx">performance workbook</a> in Excel.</li>
+          <li>Select the <strong>Copilot button</strong> near the upper-right corner to open the Copilot pane.</li>
+          <li>Start a new conversation in the pane, then paste the prompt below.</li>
+        </ul>
         <div class="prompt-card">
           <div class="prompt-header"><h3>Copilot in Excel prompt</h3><button class="copy-button" type="button" data-copy="excel-analysis-prompt">Copy</button></div>
           <pre id="excel-analysis-prompt">Analyze this weekly store and product performance data to identify where leadership attention would have the greatest impact this week. Compare regions, store groups, and products; identify meaningful outliers and trends; and show the evidence behind each finding. Recommend three actions and the additional information needed before making a final decision. Create a visualization that makes the most important comparison easy to understand.</pre>
         </div>
-        <p class="route-intro"><strong>Analyst</strong>Open Analyst in Microsoft 365 Copilot and attach the <a href="../assets/Demo_Customer_Feedback.csv" download>customer feedback data</a> to identify recurring themes and intervention priorities.</p>
+        <p class="route-intro"><strong>Analyst</strong>Use the Analyst agent in Microsoft 365 Copilot to identify recurring themes and intervention priorities.</p>
+        <ul class="access-steps">
+          <li>Open the <strong>Microsoft 365 Copilot app</strong> and select <strong>Analyst</strong> under <strong>Agents</strong>.</li>
+          <li>Select the <strong>+</strong> attachment control and add the <a href="../assets/Demo_Customer_Feedback.csv" download>customer feedback data</a>.</li>
+          <li>Start a new Analyst conversation, then paste the prompt below.</li>
+        </ul>
         <div class="prompt-card">
           <div class="prompt-header"><h3>Analyst prompt</h3><button class="copy-button" type="button" data-copy="analyst-analysis-prompt">Copy</button></div>
           <pre id="analyst-analysis-prompt">Analyze this customer feedback data to identify the issues most likely to require executive intervention. Group comments into recurring themes, quantify how often each theme appears, identify the stores, regions, products, or service moments most affected, and include representative evidence. Recommend the three intervention priorities with the expected customer or operational benefit of each. Clearly identify limitations or missing context in the data.</pre>
@@ -831,10 +862,11 @@
         <div class="kicker">Activity 7 · 6 minutes</div>
         <h2>Follow through: make it accountable.</h2>
         <p class="lede">Point Copilot Chat to a specific past meeting, convert the discussion into explicit commitments, and open a ready-to-review follow-up draft in Outlook.</p>
+        <div class="new-chat-note"><strong>Start a new chat</strong> before adding the past meeting so Copilot does not carry forward context from the analysis and writing activities.</div>
         <div class="activity-note"><strong>Add the specific meeting:</strong> In Copilot Chat, make sure <strong>Work IQ</strong> is on. Select <strong>Add work content</strong>, or type <strong>/</strong>. Choose <strong>Meetings</strong>, search by meeting title or organizer, and select the meeting before pasting the prompt.</div>
         <div class="prompt-card">
           <div class="prompt-header"><h3>Decision record and Outlook follow-up</h3><button class="copy-button" type="button" data-copy="follow-through-prompt">Copy</button></div>
-          <pre id="follow-through-prompt">Using the meeting I added to this prompt, create a decision and owner record from the available recap or transcript. Include decisions made, action items with the named owner and stated due date, unresolved questions, and items discussed but not decided. Do not invent an owner or deadline; mark it as unassigned or not specified. Then draft an Outlook email to the attendees with the decisions first, owners and dates second, and open questions last. End by asking recipients to correct anything that does not match their understanding.</pre>
+          <pre id="follow-through-prompt">Using the meeting I added to this prompt, create a decision and owner record from the available recap or transcript. Include decisions made, action items with the named owner and stated due date, unresolved questions, and items discussed but not decided. Do not invent an owner or deadline; mark it as unassigned or not specified. Then send an Outlook email to the attendees with the decisions first, owners and dates second, and open questions last. End by asking recipients to correct anything that does not match their understanding.</pre>
         </div>
         <div class="prompt-card">
           <div class="prompt-header"><h4>Open the draft in Outlook</h4><button class="copy-button" type="button" data-copy="follow-through-follow">Copy</button></div>
@@ -888,6 +920,8 @@
         <a href="https://learn.microsoft.com/en-us/training/modules/ask-analyze-content-with-microsoft-copilot-microsoft-365/" target="_blank" rel="noreferrer">Ask and analyze content</a>
         <a href="https://learn.microsoft.com/en-us/training/modules/create-draft-content-with-microsoft-copilot-microsoft-365/" target="_blank" rel="noreferrer">Create and draft content</a>
         <a href="https://learn.microsoft.com/en-us/training/modules/analyze-visualize-data-copilot/" target="_blank" rel="noreferrer">Analyze and visualize data</a>
+        <a href="https://support.microsoft.com/en-us/office/foundations-experiences/copilot-dab/the-copilot-dynamic-action-button-in-word-excel-and-powerpoint" target="_blank" rel="noreferrer">Open Copilot in Excel</a>
+        <a href="https://learn.microsoft.com/en-us/training/modules/analyze-visualize-data-copilot/3-generate-insights-analyst-agent" target="_blank" rel="noreferrer">Use the Analyst agent</a>
         <a href="https://learn.microsoft.com/en-us/training/modules/copilot-meeting-productivity/" target="_blank" rel="noreferrer">Meeting productivity</a>
         <a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/researcher-agent" target="_blank" rel="noreferrer">Researcher agent</a>
         <a href="https://support.microsoft.com/en-us/Microsoft-365-Copilot/refer-to-specific-files-and-more-in-microsoft-365-copilot" target="_blank" rel="noreferrer">Reference a specific meeting</a>
